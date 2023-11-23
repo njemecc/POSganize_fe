@@ -1,3 +1,4 @@
+import AddUser from "../features/users/addUser";
 import UsersTable from "../features/users/UsersTable";
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
@@ -11,6 +12,7 @@ const Users = () => {
       </Row>
       <Row>
         <UsersTable />
+        <AddUser />
       </Row>
     </>
   );
