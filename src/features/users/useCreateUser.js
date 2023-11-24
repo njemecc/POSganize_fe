@@ -13,7 +13,10 @@ export function useCreateUser() {
         queryKey: ["users"],
       });
     },
-    onError: (err) => toast.error(err.message),
+    onError: (err) => {
+      toast.error(err.message);
+      console.log("grska je", err);
+    },
   });
 
   return { createUser, isCreating };

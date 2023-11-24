@@ -12,7 +12,6 @@ import { useCreateUser } from "./useCreateUser";
 import { useUpdateUser } from "./useUpdateUser";
 
 const CreateUserForm = ({ onClose, edit = false, user }) => {
-  console.log(user);
   //styles
   const labelStyles = {
     fontSize: "1.5rem",
@@ -30,10 +29,10 @@ const CreateUserForm = ({ onClose, edit = false, user }) => {
 
   const onSubmit = (data) => {
     if (edit && user) {
-      updateUser(user.id, data);
+      const updatedUser = { data, userId: user.id };
+      updateUser(updatedUser);
     } else {
       createUser(data);
-      console.log(data);
     }
 
     onClose();
