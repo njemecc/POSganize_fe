@@ -21,7 +21,8 @@ const UserRow = ({ user }) => {
   const [showEdit, setShowEdit] = useState(false);
   const [whatModal, setWhatModal] = useState("");
 
-  const { isUserActive, isLoadingUserActive } = useIsActiveUser(user.id);
+  //resili smo ovo kasnije na backend-u , gde user ima active property
+  // const { isUserActive, isLoadingUserActive } = useIsActiveUser(user.id);
 
   return (
     <TableRow
@@ -41,7 +42,7 @@ const UserRow = ({ user }) => {
         {user.phoneNumber}
       </TableCell>
       <TableCell sx={{ fontSize: 13.5 }} align="left">
-        {isUserActive?.active ? "active" : "not active"}
+        {user.active ? "active" : "not active"}
       </TableCell>
       <Menus.Menu>
         <Menus.Toggle id={user.id} />
