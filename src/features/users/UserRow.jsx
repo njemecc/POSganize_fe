@@ -4,6 +4,7 @@ import ConfirmDelete from "../../ui/ConfirmDelete";
 import CreateUserForm from "./CreateUserForm";
 import { TableRow, TableCell } from "@mui/material";
 import Menus from "../../ui/Menus";
+import Tag from "../../ui/Tag";
 
 //icons
 import { HiPencil, HiTrash } from "react-icons/hi2";
@@ -21,7 +22,8 @@ const UserRow = ({ user }) => {
   const [showEdit, setShowEdit] = useState(false);
   const [whatModal, setWhatModal] = useState("");
 
-  const { isUserActive, isLoadingUserActive } = useIsActiveUser(user.id);
+  //resili smo ovo kasnije na backend-u , gde user ima active property
+  // const { isUserActive, isLoadingUserActive } = useIsActiveUser(user.id);
 
   return (
     <TableRow
@@ -41,7 +43,12 @@ const UserRow = ({ user }) => {
         {user.phoneNumber}
       </TableCell>
       <TableCell sx={{ fontSize: 13.5 }} align="left">
-        {isUserActive?.active ? "active" : "not active"}
+        {" "}
+        {user.active ? (
+          <Tag type="green">active</Tag>
+        ) : (
+          <Tag type="red">not active</Tag>
+        )}
       </TableCell>
       <Menus.Menu>
         <Menus.Toggle id={user.id} />

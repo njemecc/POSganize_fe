@@ -1,7 +1,9 @@
 import { backendURL } from "./backend";
 
-export async function getAllUsers() {
-  const response = await fetch(`${backendURL}/api/v1/users/all`);
+export async function getAllUsers({ pageNumber, pageSize, status }) {
+  const response = await fetch(
+    `${backendURL}/api/v1/users/all?pageNumber=${pageNumber}&pageSize=${pageSize}&status=${status}`
+  );
   const data = await response.json();
   // console.log("all users", data);
   return data;

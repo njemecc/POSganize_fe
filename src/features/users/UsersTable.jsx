@@ -5,16 +5,32 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import { TableFooter } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { useUsers } from "./useUsers";
-
+import { useSearchParams } from "react-router-dom";
 //components
 import Spinner from "../../ui/Spinner";
 import Menus from "../../ui/Menus";
 import UserRow from "./UserRow";
+import Pagination from "../../ui/Pagination";
 
 export default function UsersTable() {
-  const { users, loadingUsers } = useUsers();
+  const [searchParams] = useSearchParams();
+  const { users, loadingUsers, numberOfUsers } = useUsers();
+
+  //CLIENT SIDE FILTERING
+
+  // const filteredValue = searchParams.get("status");
+
+  // const filter =
+  //   !filteredValue || filteredValue === "all" ? null : filteredValue;
+
+  // const filteredUsers = filter
+  //   ? users.filter(
+  //       (user) => user.active === (filter === "active" ? true : false)
+  //     )
+  //   : users;
 
   if (loadingUsers) return <Spinner />;
 
@@ -52,6 +68,9 @@ export default function UsersTable() {
             </TableBody>
           </Table>
         </TableContainer>
+        <TableFooter sx={{ margin: "0 auto" }}>
+          <Pagination count={Number(numberOfUsers)} />
+        </TableFooter>
       </Menus>
     </>
   );
