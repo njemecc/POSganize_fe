@@ -44,7 +44,9 @@ const UserRow = ({ user }) => {
       </TableCell>
       <TableCell sx={{ fontSize: 13.5 }} align="left">
         {" "}
-        {user.active ? (
+        {user.active === null ? (
+          <Tag type="yellow">not a member</Tag>
+        ) : user.active ? (
           <Tag type="green">active</Tag>
         ) : (
           <Tag type="red">not active</Tag>
@@ -57,6 +59,7 @@ const UserRow = ({ user }) => {
             onClick={() => {
               setShowEdit(true);
               setWhatModal(user.id);
+              console.log(user);
             }}
           >
             {" "}
