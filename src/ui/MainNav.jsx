@@ -6,6 +6,7 @@ import { HiOutlineUsers } from "react-icons/hi2";
 import { FaRegNewspaper } from "react-icons/fa";
 import { IoBarChartOutline } from "react-icons/io5";
 import { RiFilePaper2Line } from "react-icons/ri";
+import { MdOutlineSportsMartialArts } from "react-icons/md";
 
 //router
 import { NavLink } from "react-router-dom";
@@ -80,6 +81,12 @@ const MainNav = () => {
           <StyledNavLink to="/rules">
             <RiFilePaper2Line />
             <span>Rules</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/trainings">
+            <MdOutlineSportsMartialArts />
+            <span>Trainings</span>
           </StyledNavLink>
         </li>
       </NavList>

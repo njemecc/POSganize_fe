@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { deleteUser as deleteUserApi } from "../../services/apiUsers";
+
 export function useDeleteUser() {
   const queryClient = useQueryClient();
 
@@ -14,7 +15,7 @@ export function useDeleteUser() {
     },
     onError: (err) => {
       toast.error(err.message);
-      console.log("Greska je : ", err);
+      console.log("Error is : ", err);
     },
   });
 
