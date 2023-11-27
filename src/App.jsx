@@ -13,6 +13,7 @@ import Users from "./pages/Users";
 import UserDetails from "./pages/UserDetails";
 import AppLayout from "./ui/AppLayout";
 import Login from "./pages/Login";
+import Trainings from "./pages/Trainings";
 import PageNotFound from "./pages/PageNotFound";
 
 //toastr
@@ -45,6 +46,7 @@ function App() {
             <Route path="news" element={<News />} />
             <Route path="rules" element={<Rules />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="trainings" element={<Trainings />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="*" element={<PageNotFound />} />

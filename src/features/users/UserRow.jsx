@@ -13,7 +13,6 @@ import { HiPencil, HiTrash } from "react-icons/hi2";
 import { useState, useEffect } from "react";
 import { useDeleteUser } from "./useDeleteUser";
 import { useIsActiveUser } from "./useIsActiveUser";
-import Spinner from "../../ui/Spinner";
 
 const UserRow = ({ user }) => {
   const { deleteUser, isDeleting } = useDeleteUser();
