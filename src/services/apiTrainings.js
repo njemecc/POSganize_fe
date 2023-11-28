@@ -43,3 +43,10 @@ export async function updateTraining({ trainingToSend, trainingId }) {
 
   return data;
 }
+
+export async function getTraining(id) {
+  const response = await fetch(`${backendURL}/api/v1/training/get/${id}`);
+  const data = await response.json();
+
+  return data;
+}
