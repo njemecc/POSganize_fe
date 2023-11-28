@@ -27,7 +27,7 @@ export default function ScheduleTable({ schedules, deleteClicked }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {schedules.map((schedule, i) => (
+          {schedules?.map((schedule, i) => (
             <ScheduleItem
               deleteClicked={deleteClicked}
               schedule={schedule}
