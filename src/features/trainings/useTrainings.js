@@ -7,8 +7,6 @@ export function useTrainings() {
     queryFn: getAllTrainings,
   });
 
-  console.log(trainings);
-
   return {
     trainings,
     loadingTrainings,
