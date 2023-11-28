@@ -17,9 +17,9 @@ import ScheduleTable from "../schedules/ScheduleTable";
 
 //toast
 import { toast } from "react-hot-toast";
+import { useQueryClient } from "@tanstack/react-query";
 
 const CreateEditTrainingForm = ({ onClose, edit = false, training }) => {
-  console.log("training:", training);
   const { createTraining, isCreating } = useCreateTraining();
   const { updateTraining, isUpdating } = useUpdateTraining();
 
@@ -59,6 +59,11 @@ const CreateEditTrainingForm = ({ onClose, edit = false, training }) => {
     const formData = getValues();
     const { scheduleDay, scheduleName, scheduleTime } = formData;
 
+    //if the inputs are empty
+    if (!scheduleDay || !scheduleName || !scheduleTime) {
+      toast.error("Some field`s are empty");
+      return;
+    }
     setSchedules((oldSchedules) => [
       ...oldSchedules,
       { scheduleDay, scheduleName, scheduleTime, id: Math.random(1000 * 9) },

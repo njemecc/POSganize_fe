@@ -16,6 +16,9 @@ import CreateEditTrainingForm from "./CreateEditTrainingForm";
 import { useState } from "react";
 import { useDeleteTraining } from "./useDeleteTraining";
 
+//router
+import { useNavigate } from "react-router-dom";
+
 export default function TrainingCard({ training }) {
   const { id, name, image, price, description } = training;
   const { deleteTraining, isDeleting } = useDeleteTraining();
@@ -24,20 +27,22 @@ export default function TrainingCard({ training }) {
   const [showEdit, setShowEdit] = useState(false);
   const [whatModal, setWhatModal] = useState("");
 
+  const navigate = useNavigate();
+
   return (
     <>
       <Card sx={{ maxWidth: 345, marginTop: 10, width: "33%" }}>
-        <CardActionArea>
+        <CardActionArea onClick={() => navigate(`/trainings/${id}`)}>
           <CardMedia component="img" height="200" image={image} alt={name} />
           <CardContent>
             <Typography gutterBottom variant="h4" component="div">
               {name}
             </Typography>
-            <Typography variant="body1" color="text.secondary">
+            {/* <Typography variant="body1" color="text.secondary">
               {description
                 ? description
                 : "Kick box is a great sport for upgrading your fighting skills and boost your confidance!"}
-            </Typography>
+            </Typography> */}
             <Typography variant="h5">{price}$</Typography>
           </CardContent>
         </CardActionArea>

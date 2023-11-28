@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "./Button";
 import Heading from "./Heading";
@@ -20,10 +21,20 @@ const StyledConfirmDelete = styled.div`
   }
 `;
 
-function ConfirmDelete({ resource, onConfirm, disabled, closeModal }) {
+function ConfirmDelete({
+  resource,
+  onConfirm,
+  disabled,
+  closeModal,
+  singleTraining,
+}) {
+  const navigate = useNavigate();
   function handleConfirmClick() {
     onConfirm();
     closeModal();
+    if (singleTraining) {
+      navigate("/trainings");
+    }
   }
 
   return (
