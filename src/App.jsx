@@ -15,6 +15,7 @@ import AppLayout from "./ui/AppLayout";
 import Login from "./pages/Login";
 import Trainings from "./pages/Trainings";
 import PageNotFound from "./pages/PageNotFound";
+import Training from "./pages/Training";
 
 //toastr
 import { Toaster } from "react-hot-toast";
@@ -47,6 +48,7 @@ function App() {
             <Route path="rules" element={<Rules />} />
             <Route path="profile" element={<Profile />} />
             <Route path="trainings" element={<Trainings />} />
+            <Route path="trainings/:trainingId" element={<Training />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="*" element={<PageNotFound />} />
