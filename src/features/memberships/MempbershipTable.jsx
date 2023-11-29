@@ -7,18 +7,20 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { TableFooter } from "@mui/material";
 import Paper from "@mui/material/Paper";
-import { useUsers } from "./useUsers";
-import { useSearchParams } from "react-router-dom";
+import { useGetMembershipByUserId } from "./useGetMembershipByUserId";
+
 //components
 import Spinner from "../../ui/Spinner";
 import Menus from "../../ui/Menus";
 import UserRow from "./UserRow";
 import Pagination from "../../ui/Pagination";
 
-export default function UsersTable() {
-  const { users, loadingUsers, numberOfUsers } = useUsers();
+export default function MembershipTable() {
+  const { memberships, loadingMemberships } = useGetMembershipByUserId();
 
-  if (loadingUsers) return <Spinner />;
+  console.log(memberships);
+
+  if (loadingMemberships) return <Spinner />;
 
   return (
     <>
