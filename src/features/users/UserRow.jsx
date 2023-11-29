@@ -7,12 +7,12 @@ import Menus from "../../ui/Menus";
 import Tag from "../../ui/Tag";
 
 //icons
-import { HiPencil, HiTrash } from "react-icons/hi2";
+import { HiEye, HiPencil, HiTrash } from "react-icons/hi2";
 
 //hooks
 import { useState, useEffect } from "react";
 import { useDeleteUser } from "./useDeleteUser";
-import { useIsActiveUser } from "./useIsActiveUser";
+import { useNavigate } from "react-router-dom";
 
 const UserRow = ({ user }) => {
   const { deleteUser, isDeleting } = useDeleteUser();
@@ -20,6 +20,8 @@ const UserRow = ({ user }) => {
 
   const [showEdit, setShowEdit] = useState(false);
   const [whatModal, setWhatModal] = useState("");
+
+  const navigate = useNavigate();
 
   //resili smo ovo kasnije na backend-u , gde user ima active property
   // const { isUserActive, isLoadingUserActive } = useIsActiveUser(user.id);
@@ -72,6 +74,14 @@ const UserRow = ({ user }) => {
           >
             <HiTrash />
             Delete
+          </Menus.Button>
+          <Menus.Button
+            onClick={() => {
+              navigate(`/users/${user.id}`);
+            }}
+          >
+            <HiEye />
+            Details
           </Menus.Button>
         </Menus.List>
       </Menus.Menu>
