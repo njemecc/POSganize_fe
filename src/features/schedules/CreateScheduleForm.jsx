@@ -4,11 +4,18 @@ import { Stack } from "@mui/system";
 import { TextField } from "@mui/material";
 import Row from "../../ui/Row";
 import Button from "../../ui/Button";
+
 //form
 import { useForm } from "react-hook-form";
 
+//hooks
+import { useParams } from "react-router-dom";
+import { useCreateSchedule } from "./useCreateSchedule";
+
 const CreateScheduleForm = ({ onClose }) => {
   const { register, handleSubmit } = useForm();
+
+  const { trainingId } = useParams();
 
   const labelStyles = {
     fontSize: "1.5rem",
@@ -18,7 +25,13 @@ const CreateScheduleForm = ({ onClose }) => {
     fontSize: "1.5rem",
   };
 
-  const onSubmit = (data) => {};
+  const { createScheduleByTrainingId, isCreating } = useCreateSchedule();
+
+  const onSubmit = (data) => {
+    createScheduleByTrainingId({ data, trainingId });
+
+    onClose();
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
