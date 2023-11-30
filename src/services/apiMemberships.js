@@ -6,3 +6,15 @@ export async function getMembershipByUserId(id) {
 
   return data;
 }
+
+export async function createMembership(membership) {
+  const response = await fetch(`${backendURL}/api/v1/membership/create`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(membership),
+  });
+
+  const data = await response.json();
+
+  return data;
+}
