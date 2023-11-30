@@ -10,5 +10,5 @@ export function useGetMembershipByUserId() {
     queryFn: () => getMembershipByUserId(userId),
   });
 
-  return { memberships, loadingMemberships };
+  return { memberships: memberships?.memberships, loadingMemberships };
 }

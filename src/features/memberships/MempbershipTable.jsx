@@ -12,7 +12,9 @@ import { useGetMembershipByUserId } from "./useGetMembershipByUserId";
 //components
 import Spinner from "../../ui/Spinner";
 import Menus from "../../ui/Menus";
-import UserRow from "./UserRow";
+import MembershipRow from "./MembershipRow";
+import Empty from "../../ui/Empty";
+
 import Pagination from "../../ui/Pagination";
 
 export default function MembershipTable() {
@@ -21,6 +23,9 @@ export default function MembershipTable() {
   console.log(memberships);
 
   if (loadingMemberships) return <Spinner />;
+
+  if (!loadingMemberships && memberships.length === 0)
+    return <Empty resource="memberships" />;
 
   return (
     <>
@@ -33,16 +38,16 @@ export default function MembershipTable() {
             <TableHead>
               <TableRow>
                 <TableCell sx={{ fontSize: 15, fontWeight: 600 }}>
-                  First Name
+                  Trainings
                 </TableCell>
                 <TableCell sx={{ fontSize: 15, fontWeight: 600 }} align="left">
-                  Last Name
+                  Start Date
                 </TableCell>
                 <TableCell sx={{ fontSize: 15, fontWeight: 600 }} align="left">
-                  Email
+                  Expire Date
                 </TableCell>
                 <TableCell sx={{ fontSize: 15, fontWeight: 600 }} align="left">
-                  Number
+                  Price
                 </TableCell>
                 <TableCell sx={{ fontSize: 15, fontWeight: 600 }} align="left">
                   Active
@@ -50,14 +55,14 @@ export default function MembershipTable() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {users.map((user) => (
-                <UserRow key={user.id} user={user} />
+              {memberships?.map((membership) => (
+                <MembershipRow key={membership.id} membership={membership} />
               ))}
             </TableBody>
           </Table>
         </TableContainer>
         <TableFooter sx={{ margin: "0 auto" }}>
-          <Pagination count={Number(numberOfUsers)} />
+          {/* <Pagination count={Number(numberOfUsers)} /> */}
         </TableFooter>
       </Menus>
     </>
