@@ -1,7 +1,9 @@
 import { backendURL } from "./backend";
 
-export async function getMembershipByUserId(id) {
-  const response = await fetch(`${backendURL}/api/v1/membership/user/${id}`);
+export async function getMembershipByUserId({ userId, sortBy }) {
+  const response = await fetch(
+    `${backendURL}/api/v1/membership/user/${userId}?sortOrder=${sortBy}`
+  );
   const data = await response.json();
 
   return data;
