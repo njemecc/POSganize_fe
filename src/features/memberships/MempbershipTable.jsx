@@ -14,13 +14,24 @@ import Spinner from "../../ui/Spinner";
 import Menus from "../../ui/Menus";
 import MembershipRow from "./MembershipRow";
 import Empty from "../../ui/Empty";
+import SortBy from "../../ui/SortBy";
 
 import Pagination from "../../ui/Pagination";
 
 export default function MembershipTable() {
-  const { memberships, loadingMemberships } = useGetMembershipByUserId();
+  const { memberships, loadingMemberships, numberOfMemberships } =
+    useGetMembershipByUserId();
 
-  console.log(memberships);
+  const sortOptions = [
+    {
+      label: "DESC",
+      value: "desc",
+    },
+    {
+      label: "ASC",
+      value: "asc",
+    },
+  ];
 
   if (loadingMemberships) return <Spinner />;
 
@@ -29,6 +40,7 @@ export default function MembershipTable() {
 
   return (
     <>
+      <SortBy options={sortOptions} />
       <Menus>
         <TableContainer component={Paper}>
           <Table
@@ -62,7 +74,7 @@ export default function MembershipTable() {
           </Table>
         </TableContainer>
         <TableFooter sx={{ margin: "0 auto" }}>
-          {/* <Pagination count={Number(numberOfUsers)} /> */}
+          <Pagination count={Number(numberOfMemberships)} />
         </TableFooter>
       </Menus>
     </>
