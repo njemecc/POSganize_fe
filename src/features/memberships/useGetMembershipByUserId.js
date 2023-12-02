@@ -2,19 +2,29 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { getMembershipByUserId } from "../../services/apiMemberships";
 import { useSearchParams } from "react-router-dom";
+import { PAGE_SIZE } from "../../utils/constants";
 export function useGetMembershipByUserId() {
   const [searchParams] = useSearchParams();
 
   const { userId } = useParams();
+
+  //PAGINATION
+
+  const pageNumber = !searchParams.get("page")
+    ? 0
+    : Number(searchParams.get("page"));
+
+  const pageSize = PAGE_SIZE;
+
+  //sort
   const sortBy = searchParams.get("sortOrder")
     ? searchParams.get("sortOrder")
     : "desc";
 
-  //sort
-
   const { data: memberships, isLoading: loadingMemberships } = useQuery({
-    queryKey: ["membership", userId, sortBy],
-    queryFn: () => getMembershipByUserId({ userId, sortBy }),
+    queryKey: ["membership", userId, sortBy, pageNumber],
+    queryFn: () =>
+      getMembershipByUserId({ userId, sortBy, pageNumber, pageSize }),
   });
 
   return {
