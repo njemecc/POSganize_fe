@@ -1,8 +1,13 @@
 import { backendURL } from "./backend";
 
-export async function getMembershipByUserId({ userId, sortBy }) {
+export async function getMembershipByUserId({
+  userId,
+  sortBy,
+  pageNumber,
+  pageSize,
+}) {
   const response = await fetch(
-    `${backendURL}/api/v1/membership/user/${userId}?sortOrder=${sortBy}`
+    `${backendURL}/api/v1/membership/user/${userId}?sortOrder=${sortBy}&pageNumber=${pageNumber}&pageSize=${pageSize}`
   );
   const data = await response.json();
 

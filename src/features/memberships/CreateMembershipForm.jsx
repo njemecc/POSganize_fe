@@ -66,8 +66,11 @@ const CreateMembershipForm = ({ onClose }) => {
             <ListItem key={training.name} dense>
               <FormControlLabel
                 sx={{ fontSize: "5rem" }}
+                style={{ fontSize: "5rem" }}
                 control={
                   <Checkbox
+                    sx={{ fontSize: "5rem" }}
+                    style={{ fontSize: "5rem" }}
                     onChange={(data) => {
                       if (data.target.checked) {
                         setTrainingsToSend((prevTrainings) => [
