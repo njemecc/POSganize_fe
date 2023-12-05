@@ -16,21 +16,7 @@ import UserRow from "./UserRow";
 import Pagination from "../../ui/Pagination";
 
 export default function UsersTable() {
-  const [searchParams] = useSearchParams();
   const { users, loadingUsers, numberOfUsers } = useUsers();
-
-  //CLIENT SIDE FILTERING
-
-  // const filteredValue = searchParams.get("status");
-
-  // const filter =
-  //   !filteredValue || filteredValue === "all" ? null : filteredValue;
-
-  // const filteredUsers = filter
-  //   ? users.filter(
-  //       (user) => user.active === (filter === "active" ? true : false)
-  //     )
-  //   : users;
 
   if (loadingUsers) return <Spinner />;
 

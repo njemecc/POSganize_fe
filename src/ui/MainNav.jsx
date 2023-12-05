@@ -6,9 +6,14 @@ import { HiOutlineUsers } from "react-icons/hi2";
 import { FaRegNewspaper } from "react-icons/fa";
 import { IoBarChartOutline } from "react-icons/io5";
 import { RiFilePaper2Line } from "react-icons/ri";
+import { MdOutlineSportsMartialArts } from "react-icons/md";
 
 //router
 import { NavLink } from "react-router-dom";
+//hooks
+import { useUser } from "../features/authentication/useUser";
+import { ADMIN } from "../utils/roles";
+//constants
 
 const NavList = styled.ul`
   display: flex;
@@ -55,19 +60,22 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 const MainNav = () => {
+  //authorization
+  const { role } = useUser();
+
   return (
     <nav>
       <NavList>
         <li>
-          <StyledNavLink to="/dashboard">
-            <IoBarChartOutline />
-            <span>Dashboard</span>
-          </StyledNavLink>
-        </li>
-        <li>
           <StyledNavLink to="/users">
             <HiOutlineUsers />
             <span>Users</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/trainings">
+            <MdOutlineSportsMartialArts />
+            <span>Trainings</span>
           </StyledNavLink>
         </li>
         <li>
@@ -82,6 +90,14 @@ const MainNav = () => {
             <span>Rules</span>
           </StyledNavLink>
         </li>
+        {role === ADMIN && (
+          <li>
+            <StyledNavLink to="/dashboard">
+              <IoBarChartOutline />
+              <span>Dashboard</span>
+            </StyledNavLink>
+          </li>
+        )}
       </NavList>
     </nav>
   );

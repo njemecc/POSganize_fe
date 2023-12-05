@@ -9,6 +9,14 @@ export async function getAllUsers({ pageNumber, pageSize, status }) {
   return data;
 }
 
+export async function getUserById(id) {
+  const response = await fetch(`${backendURL}/api/v1/users/get/${id}`);
+
+  const data = await response.json();
+
+  return data;
+}
+
 export async function deleteUser(id) {
   const response = await fetch(`${backendURL}/api/v1/users/delete/${id}`, {
     method: "DELETE",

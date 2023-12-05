@@ -1,0 +1,63 @@
+/* LoginForm.css */
+
+.login-form-container {
+  width: 35rem;
+  height: 32rem;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 4rem;
+  width: 100%;
+}
+
+.custom-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333; /* Custom label color */
+}
+
+.custom-input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 5px;
+  /* Additional custom input styles if needed */
+}
+
+.button-wrapper {
+  margin-top: 3rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: end;
+}
+
+.custom-button {
+  width: 100%;
+  cursor: pointer;
+  margin: auto auto;
+}
+
+.signup-prompt {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.signup-prompt a {
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.signup-prompt a:hover {
+  text-decoration: underline;
+}

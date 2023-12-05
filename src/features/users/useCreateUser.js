@@ -15,7 +15,7 @@ export function useCreateUser() {
     },
     onError: (err) => {
       toast.error(err.message);
-      console.log("grska je", err);
+      console.log("error is", err);
     },
   });
 
