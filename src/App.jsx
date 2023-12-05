@@ -24,6 +24,11 @@ import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
+//authorization
+import ProtectedRoute from "./ui/ProtectedRoute";
+import AdminProtectedRoute from "./ui/AdminProtectedRoute";
+import Register from "./pages/Register";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -39,11 +44,40 @@ function App() {
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
-          <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="dashboard" />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="users" element={<Users />} />
-            <Route path="users/:userId" element={<UserDetails />} />
+          <Route
+            element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Navigate replace to="login" />} />
+
+            <Route
+              path="dashboard"
+              element={
+                <AdminProtectedRoute>
+                  <Dashboard />
+                </AdminProtectedRoute>
+              }
+            />
+            <Route
+              path="users"
+              element={
+                <AdminProtectedRoute>
+                  <Users />
+                </AdminProtectedRoute>
+              }
+            />
+            <Route
+              path="users/:userId"
+              element={
+                <AdminProtectedRoute>
+                  <UserDetails />
+                </AdminProtectedRoute>
+              }
+            />
+
             <Route path="news" element={<News />} />
             <Route path="rules" element={<Rules />} />
             <Route path="profile" element={<Profile />} />
@@ -51,6 +85,7 @@ function App() {
             <Route path="trainings/:trainingId" element={<Training />} />
           </Route>
           <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Register />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
