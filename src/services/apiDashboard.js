@@ -9,9 +9,9 @@ export async function getStatisticsByDate({ fromDate, toDate }) {
   return data;
 }
 
-export async function getMembersPerTraining() {
+export async function getMembersPerTraining({ fromDate, toDate }) {
   const response = await fetch(
-    `${backendURL}/api/v1/training/users-per-training`
+    `${backendURL}/api/v1/training/users-per-training?fromDate=${fromDate}&toDate=${toDate}`
   );
   const data = await response.json();
 
