@@ -7,8 +7,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import ScheduleItem from "./ScheduleItem";
+import { useUser } from "../authentication/useUser";
+import { ADMIN } from "../../utils/roles";
 
 export default function ScheduleTable({ schedules, deleteClicked }) {
+  //authorization
+  const { role } = useUser();
+
   return (
     <TableContainer style={{ marginTop: "2rem" }} component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
@@ -21,9 +26,11 @@ export default function ScheduleTable({ schedules, deleteClicked }) {
             <TableCell style={{ fontSize: "1.2rem" }} align="right">
               Time
             </TableCell>
-            <TableCell style={{ fontSize: "1.2rem" }} align="right">
-              Actions
-            </TableCell>
+            {role === ADMIN && (
+              <TableCell style={{ fontSize: "1.2rem" }} align="right">
+                Actions
+              </TableCell>
+            )}
           </TableRow>
         </TableHead>
         <TableBody>
