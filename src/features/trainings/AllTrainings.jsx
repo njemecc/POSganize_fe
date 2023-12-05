@@ -11,10 +11,14 @@ import { useState } from "react";
 import Modal from "../../ui/Modal";
 import CreateEditTrainingForm from "./CreateEditTrainingForm";
 import Button from "../../ui/Button";
+import { useUser } from "../authentication/useUser";
+import { ADMIN } from "../../utils/roles";
 
 const AllTrainings = () => {
   const { trainings, loadingTrainings } = useTrainings();
   const [showCreate, setShowCreate] = useState(false);
+
+  const { role } = useUser();
 
   loadingTrainings && <Spinner />;
 
@@ -32,7 +36,10 @@ const AllTrainings = () => {
           <TrainingCard key={training.id} training={training} />
         ))}
       </Box>
-      <Button onClick={() => setShowCreate(true)}>Create New Training</Button>
+      {role === ADMIN && (
+        <Button onClick={() => setShowCreate(true)}>Create New Training</Button>
+      )}
+
       {showCreate && (
         <Modal onClose={() => setShowCreate(false)}>
           <CreateEditTrainingForm onClose={() => setShowCreate(false)} />

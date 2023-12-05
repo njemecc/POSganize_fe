@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import Logo from "../ui/Logo";
 import Heading from "../ui/Heading";
-import LoginForm from "../features/authentication/LoginForm";
+import Logo from "../ui/Logo";
+import RegisterForm from "../features/authentication/RegisterForm";
 import { useUser } from "../features/authentication/useUser";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import Spinner from "../ui/Spinner";
-const LoginLayout = styled.main`
+
+const RegisterLayout = styled.main`
   min-height: 100vh;
   display: grid;
   grid-template-columns: 48rem;
@@ -16,7 +17,7 @@ const LoginLayout = styled.main`
   background-color: var(--color-grey-50);
 `;
 
-const Login = () => {
+const Register = () => {
   const { isAuthenticated, isLoading } = useUser();
   const navigate = useNavigate();
 
@@ -28,12 +29,12 @@ const Login = () => {
   isLoading && <Spinner />;
 
   return (
-    <LoginLayout>
+    <RegisterLayout>
       <Logo />
-      <Heading as="h4">Log in to yout account</Heading>
-      <LoginForm />
-    </LoginLayout>
+      <Heading as="h4">Register</Heading>
+      <RegisterForm />
+    </RegisterLayout>
   );
 };
 
-export default Login;
+export default Register;

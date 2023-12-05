@@ -93,7 +93,7 @@ function TrainingChart({ membersPerTraining }) {
 
   return (
     <ChartBox>
-      <Heading type="h2">Trainings summary</Heading>
+      {/* <Heading type="h2">Trainings summary</Heading> */}
       <ResponsiveContainer width="100%" height={240}>
         <PieChart>
           <Pie

@@ -42,7 +42,7 @@ function RevenueChart({ revenueData }) {
       <ResponsiveContainer height={300} width="100%">
         <AreaChart data={revenueData}>
           <XAxis
-            dataKey="month"
+            dataKey="date"
             tick={{ fill: colors.text }}
             tickLine={{ stroke: colors.text }}
           />

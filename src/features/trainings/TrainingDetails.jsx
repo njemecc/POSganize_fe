@@ -16,17 +16,24 @@ import ScheduleTable from "../schedules/ScheduleTable";
 import { HiPencil, HiTrash } from "react-icons/hi2";
 import { useDeleteSchedule } from "../schedules/useDeleteSchedule";
 import CreateScheduleForm from "../schedules/createScheduleForm";
+import { useUser } from "../authentication/useUser";
+import { ADMIN } from "../../utils/roles";
 
 const TrainingDetails = () => {
   const { training, loadingTraining } = useGetTrainingById();
   const { deleteTraining, isDeleting } = useDeleteTraining();
   const { deleteSchedule, isDeletingSchedule } = useDeleteSchedule();
 
+  //authorization
+  const { role, isLoading } = useUser();
+
   const [showDeleting, setShowDeleting] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const [whatModal, setWhatModal] = useState("");
 
   const [showAddSchedule, setShowAddSchedule] = useState(false);
+
+  isLoading && <Spinner />;
 
   return (
     <div>
@@ -35,31 +42,34 @@ const TrainingDetails = () => {
         <div style={{ width: "50%" }}>
           <img src={training?.image} />
         </div>
+
         <Row style={{ width: "45%" }}>
           <Heading as="h5">{training?.description}</Heading>
-          <div style={{ display: "flex", gap: "1rem" }}>
-            <Button
-              onClick={() => {
-                setShowEdit(true);
-                setWhatModal(training?.id);
-              }}
-              variant="contained"
-              sx={{ fontSize: "1.3rem" }}
-            >
-              <HiPencil />
-            </Button>
-            <Button
-              sx={{ fontSize: "1.3rem" }}
-              onClick={() => {
-                setShowDeleting(true);
-                setWhatModal(training?.id);
-              }}
-              variant="contained"
-              color="error"
-            >
-              <HiTrash />
-            </Button>
-          </div>
+          {role === "ROLE_ADMIN" && (
+            <div style={{ display: "flex", gap: "1rem" }}>
+              <Button
+                onClick={() => {
+                  setShowEdit(true);
+                  setWhatModal(training?.id);
+                }}
+                variant="contained"
+                sx={{ fontSize: "1.3rem" }}
+              >
+                <HiPencil />
+              </Button>
+              <Button
+                sx={{ fontSize: "1.3rem" }}
+                onClick={() => {
+                  setShowDeleting(true);
+                  setWhatModal(training?.id);
+                }}
+                variant="contained"
+                color="error"
+              >
+                <HiTrash />
+              </Button>
+            </div>
+          )}
         </Row>
       </Row>
       <Row style={{ marginTop: "8rem" }}>
@@ -68,13 +78,15 @@ const TrainingDetails = () => {
           schedules={training?.schedule}
           deleteClicked={deleteSchedule}
         />
-        <Button
-          onClick={() => setShowAddSchedule(true)}
-          variant="contained"
-          type="button"
-        >
-          Add new schedule
-        </Button>
+        {role === ADMIN && (
+          <Button
+            onClick={() => setShowAddSchedule(true)}
+            variant="contained"
+            type="button"
+          >
+            Add new schedule
+          </Button>
+        )}
       </Row>
       {showAddSchedule ? (
         <Modal onClose={() => setShowAddSchedule(false)}>

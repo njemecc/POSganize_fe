@@ -42,7 +42,7 @@ const MembersChart = ({ membersMonthData }) => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="month" />
+          <XAxis dataKey="date" />
           <YAxis dataKey="members" />
           <Tooltip />
           <Legend />

@@ -3,8 +3,12 @@ import { TableCell } from "@mui/material";
 
 import { HiTrash } from "react-icons/hi2";
 import Button from "../../ui/Button";
+import { useUser } from "../authentication/useUser";
+import { ADMIN } from "../../utils/roles";
 
 const ScheduleItem = ({ schedule, deleteClicked }) => {
+  const { role } = useUser();
+
   return (
     <TableRow
       sx={{
@@ -20,11 +24,13 @@ const ScheduleItem = ({ schedule, deleteClicked }) => {
       <TableCell style={{ fontSize: "1.1rem" }} align="right">
         {schedule.scheduleTime}
       </TableCell>
-      <TableCell style={{ fontSize: "1.1rem" }} align="right">
-        <Button type="button" size="small">
-          <HiTrash onClick={() => deleteClicked(schedule.id)} />
-        </Button>
-      </TableCell>
+      {role === ADMIN && (
+        <TableCell style={{ fontSize: "1.1rem" }} align="right">
+          <Button type="button" size="small">
+            <HiTrash onClick={() => deleteClicked(schedule.id)} />
+          </Button>
+        </TableCell>
+      )}
     </TableRow>
   );
 };
