@@ -27,19 +27,32 @@ const DashboardLayout = () => {
   if (isLoading1 || isLoading2) return <Spinner />;
 
   const revenueData = statistics.revenue_and_members.map(
-    ({ members, ...rest }) => rest
+    ({ month, price, year, members }) => {
+      return { price, date: `${month} ${year}` };
+    }
   );
 
+  console.log("rev", revenueData);
+
   const membersMonthData = statistics.revenue_and_members.map(
-    ({ revenue, ...rest }) => rest
+    ({ month, price, year, members }) => {
+      return { members, date: `${month} ${year}` };
+    }
   );
 
   const totalRevenue = statistics.RevenueAndMembersByMonth.totalRevenue;
   const totalMembers = statistics.RevenueAndMembersByMonth.totalMembers;
+  const mostPopularTraining = statistics.MostPopularTraining;
+  const numberOfTrainings = statistics.NumberOfActiveTrainings;
 
   return (
     <StyledDashboardLayout>
-      <Stats totalRevenue={totalRevenue} totalMembers={totalMembers} />
+      <Stats
+        totalRevenue={totalRevenue}
+        totalMembers={totalMembers}
+        mostPopularTraining={mostPopularTraining}
+        numberOfTrainings={numberOfTrainings}
+      />
       <MembersChart membersMonthData={membersMonthData} />
 
       <TrainingChart membersPerTraining={membersPerTraining} />
