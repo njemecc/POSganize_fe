@@ -20,6 +20,7 @@
     "@tanstack/react-query-devtools": "^5.8.4",
     "date-fns": "^2.30.0",
     "dayjs": "^1.11.10",
+    "git": "^0.1.5",
     "query": "github:tanstack/react-query",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

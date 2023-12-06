@@ -3,6 +3,7 @@ import { useUser } from "../features/authentication/useUser";
 import AddMembership from "../features/memberships/AddMembership";
 import MembershipTable from "../features/memberships/MempbershipTable";
 import UserDetailsHeader from "../features/users/userDetailsHeader";
+import UserDetailsHeaderv2 from "../features/users/UserDetailsHeaderv2";
 import Heading from "../ui/Heading";
 import Spinner from "../ui/Spinner";
 import { ADMIN } from "../utils/roles";
@@ -14,7 +15,8 @@ const UserDetails = () => {
 
   return (
     <>
-      <UserDetailsHeader />
+      {/* <UserDetailsHeader /> */}
+      <UserDetailsHeaderv2 />
 
       <Heading as="h2">
         {" "}
