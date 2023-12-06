@@ -5,12 +5,23 @@ import Logout from "../features/authentication/logout";
 import ButtonIcon from "./ButtonIcon";
 import DarkModeToggle from "./DarkModeToggle";
 
+import { useState, useEffect } from "react";
+import Heading from "./Heading";
+
 const StyledHeaderMenu = styled.ul`
   display: flex;
   gap: 0.4rem;
 `;
 
 const HeaderMenu = () => {
+  const [firstName, setFirstName] = useState(
+    localStorage.getItem("user").firstName
+  );
+
+  useEffect(() => {
+    setFirstName(JSON.parse(localStorage.getItem("user")).firstName);
+  }, [localStorage.getItem("user")]);
+
   const navigate = useNavigate();
   return (
     <StyledHeaderMenu>
@@ -19,6 +30,16 @@ const HeaderMenu = () => {
           <HiOutlineUser />
         </ButtonIcon>
       </li> */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Heading as="h8">{`${firstName}`}</Heading>
+      </div>
+
       <li>
         <Logout />
       </li>

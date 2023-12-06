@@ -77,6 +77,7 @@ function App() {
                 </AdminProtectedRoute>
               }
             />
+            <Route path="profile" element={<UserDetails />} />
 
             <Route path="news" element={<News />} />
             <Route path="rules" element={<Rules />} />

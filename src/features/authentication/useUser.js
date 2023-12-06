@@ -13,7 +13,8 @@ export function useUser() {
   // queryClient.setQueryData(["isAuthenticated"], user);
 
   const isAuthenticated = user?.isAuthenticated;
-  const role = user?.Role;
+  const role = user?.role;
+  const userId = user?.userId;
 
-  return { isLoading, isAuthenticated, role };
+  return { isLoading, isAuthenticated, role, userId };
 }

@@ -3,10 +3,16 @@ import { useParams } from "react-router-dom";
 import { getMembershipByUserId } from "../../services/apiMemberships";
 import { useSearchParams } from "react-router-dom";
 import { PAGE_SIZE } from "../../utils/constants";
+import { useUser } from "../authentication/useUser";
 export function useGetMembershipByUserId() {
   const [searchParams] = useSearchParams();
 
-  const { userId } = useParams();
+  const { userId: paramsUserId } = useParams();
+  const { userId: profileUserId } = useUser();
+
+  const userId = paramsUserId ? paramsUserId : profileUserId;
+
+  console.log("userId", userId);
 
   //PAGINATION
 
