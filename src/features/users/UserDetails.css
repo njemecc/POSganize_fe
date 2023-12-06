@@ -1,0 +1,145 @@
+/* profileHeader.css */
+
+/* Container */
+.bg-gray-50 {
+  background-color: #f9fafb; /* Replace with your desired background color */
+  padding-top: 4rem; /* 16px */
+  padding-bottom: 2.5rem; /* 10px */
+}
+
+.max-w-7xl {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Title */
+.text-3xl {
+  font-size: 1.875rem; /* 30px */
+  font-weight: 800;
+  color: #1f2937; /* Replace with your desired text color */
+}
+
+.text-xl {
+  font-size: 1.25rem; /* 20px */
+  color: #4b5563; /* Replace with your desired text color */
+}
+
+/* Separator Line */
+.h-1-2 {
+  height: 50%;
+  background-color: #f9fafb; /* Match the container's background color */
+}
+
+/* Profile Details */
+.rounded-lg {
+  border-radius: 0.5rem; /* 8px */
+}
+
+.bg-white {
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.border {
+  border-width: 1px;
+  border-color: #e5e7eb; /* Replace with your desired border color */
+}
+
+.border-gray-100 {
+  border-color: #d1d5db; /* Replace with your desired border color */
+}
+
+.border-b {
+  border-bottom-width: 1px;
+}
+
+.border-t {
+  border-top-width: 1px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.p-6 {
+  padding: 1.5rem; /* 24px */
+}
+
+.mt-2 {
+  margin-top: 0.5rem; /* 8px */
+}
+
+.text-lg {
+  font-size: 1.125rem; /* 18px */
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-extrabold {
+  font-weight: 800;
+}
+
+.text-gray-500 {
+  color: #6b7280; /* Replace with your desired text color */
+}
+
+.text-gray-700 {
+  color: #4b5563; /* Replace with your desired text color */
+}
+
+.text-5xl {
+  font-size: 3rem; /* 48px */
+}
+
+.pb-1 {
+  padding-bottom: 0.25rem; /* Adjust as needed */
+}
+
+.nasWrapper {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+/* Responsive */
+
+@media (max-width: 640px) {
+  .flex {
+    display: block;
+  }
+
+  .sm\:px-6 {
+    padding-left: 1.5rem; /* 24px */
+    padding-right: 1.5rem; /* 24px */
+  }
+
+  .nasWrapper {
+    padding: 0.5rem 0; /* Adjust as needed */
+  }
+
+  .text-3xl {
+    font-size: 1.5rem; /* 24px */
+  }
+
+  .text-xl {
+    font-size: 1rem; /* 16px */
+  }
+
+  .p-6 {
+    padding: 1rem; /* 16px */
+  }
+
+  .text-lg {
+    font-size: 0.875rem; /* 14px */
+  }
+
+  .text-5xl {
+    font-size: 2.5rem; /* 40px */
+  }
+}
