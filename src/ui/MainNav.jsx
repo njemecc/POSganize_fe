@@ -13,6 +13,7 @@ import { NavLink } from "react-router-dom";
 //hooks
 import { useUser } from "../features/authentication/useUser";
 import { ADMIN } from "../utils/roles";
+import Spinner from "./Spinner";
 //constants
 
 const NavList = styled.ul`
@@ -61,17 +62,29 @@ const StyledNavLink = styled(NavLink)`
 
 const MainNav = () => {
   //authorization
-  const { role } = useUser();
+  const { role, userId, isLoading } = useUser();
+
+  isLoading && <Spinner />;
 
   return (
     <nav>
       <NavList>
-        <li>
-          <StyledNavLink to="/users">
-            <HiOutlineUsers />
-            <span>Users</span>
-          </StyledNavLink>
-        </li>
+        {role === ADMIN && !isLoading ? (
+          <li>
+            <StyledNavLink to="/users">
+              <HiOutlineUsers />
+              <span>Users</span>
+            </StyledNavLink>
+          </li>
+        ) : (
+          <li>
+            <StyledNavLink to={"/profile"}>
+              <HiOutlineUsers />
+              <span>Profile</span>
+            </StyledNavLink>
+          </li>
+        )}
+
         <li>
           <StyledNavLink to="/trainings">
             <MdOutlineSportsMartialArts />
