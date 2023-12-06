@@ -35,7 +35,7 @@ export default function MembershipTable() {
 
   if (loadingMemberships) return <Spinner />;
 
-  if (!loadingMemberships && memberships.length === 0)
+  if (!loadingMemberships && memberships?.length === 0)
     return <Empty resource="memberships" />;
 
   return (
