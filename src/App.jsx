@@ -7,7 +7,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 //components
 import Dashboard from "./pages/Dashboard";
 import News from "./pages/News";
-import Profile from "./pages/Profile";
+
 import Rules from "./pages/Rules";
 import Users from "./pages/Users";
 import UserDetails from "./pages/UserDetails";
@@ -81,7 +81,7 @@ function App() {
 
             <Route path="news" element={<News />} />
             <Route path="rules" element={<Rules />} />
-            <Route path="profile" element={<Profile />} />
+
             <Route path="trainings" element={<Trainings />} />
             <Route path="trainings/:trainingId" element={<Training />} />
           </Route>
