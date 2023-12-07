@@ -8,14 +8,14 @@ import Spinner from "../../ui/Spinner";
 import Row from "../../ui/Row";
 import { Button } from "@mui/material";
 import Modal from "../../ui/Modal";
-import CreateEditTrainingForm from "./CreateEditTrainingForm";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import ScheduleTable from "../schedules/ScheduleTable";
+import CreateScheduleForm from "../schedules/CreateScheduleForm";
 
 //icons
 import { HiPencil, HiTrash } from "react-icons/hi2";
 import { useDeleteSchedule } from "../schedules/useDeleteSchedule";
-import CreateScheduleForm from "../schedules/createScheduleForm";
+
 import { useUser } from "../authentication/useUser";
 import { ADMIN } from "../../utils/roles";
 
