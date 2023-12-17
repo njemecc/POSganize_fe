@@ -13,6 +13,7 @@ import CreateEditTrainingForm from "./CreateEditTrainingForm";
 import Button from "../../ui/Button";
 import { useUser } from "../authentication/useUser";
 import { ADMIN } from "../../utils/roles";
+import TrainingCardv2 from "./TrainingCardv2";
 
 const AllTrainings = () => {
   const { trainings, loadingTrainings } = useTrainings();
@@ -33,7 +34,8 @@ const AllTrainings = () => {
         }}
       >
         {trainings?.map((training) => (
-          <TrainingCard key={training.id} training={training} />
+          // <TrainingCard key={training.id} training={training} />
+          <TrainingCardv2 key={training.id} training={training} />
         ))}
       </Box>
       {role === ADMIN && (

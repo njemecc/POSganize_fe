@@ -26,14 +26,15 @@ import { ADMIN } from "../../utils/roles";
 
 export default function TrainingCard({ training }) {
   const { id, name, image, price } = training;
-  const { deleteTraining, isDeleting } = useDeleteTraining();
+
+  // const { deleteTraining, isDeleting } = useDeleteTraining();
 
   //authorization
-  const { role } = useUser();
+  // const { role } = useUser();
 
-  const [showDeleting, setShowDeleting] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
-  const [whatModal, setWhatModal] = useState("");
+  // const [showDeleting, setShowDeleting] = useState(false);
+  // const [showEdit, setShowEdit] = useState(false);
+  // const [whatModal, setWhatModal] = useState("");
 
   const navigate = useNavigate();
 
@@ -45,11 +46,6 @@ export default function TrainingCard({ training }) {
           <Typography gutterBottom variant="h4" component="div">
             {name}
           </Typography>
-          {/* <Typography variant="body1" color="text.secondary">
-              {description
-                ? description
-                : "Kick box is a great sport for upgrading your fighting skills and boost your confidance!"}
-            </Typography> */}
           <Typography variant="h5">{price}$</Typography>
         </CardContent>
       </CardActionArea>
