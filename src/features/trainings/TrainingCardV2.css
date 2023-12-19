@@ -22,13 +22,14 @@
 }
 
 .card {
-  margin: 10rem 0;
+  margin: 5rem 1rem;
   width: 25%;
-  background-size: cover;
   padding: 10rem 0 0;
   background-size: cover;
   background-position: center;
-  max-width: 35ch;
+  object-fit: contain;
+  background-repeat: no-repeat;
+  /* max-width: 105ch; */
   color: var(--clr-white);
   font-family: "Roboto", sans-serif;
   border-radius: var(--radius-1);
@@ -39,6 +40,7 @@
 
 .card:hover {
   transform: scale(1.07);
+  cursor: pointer;
 }
 
 .card-content {
@@ -49,9 +51,6 @@
     hsl(0 0% 0% / 0.35) 20%,
     hsl(0 0% 0% / 1)
   );
-}
-
-.card-body {
 }
 
 @media (hover) {
@@ -82,6 +81,11 @@
   .card-title::after {
     transform: scaleX(0);
   }
+}
+
+.card-body {
+  text-align: center;
+  margin: 0.5rem;
 }
 
 .card-title {
