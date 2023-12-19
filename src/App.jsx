@@ -28,6 +28,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import AdminProtectedRoute from "./ui/AdminProtectedRoute";
 import Register from "./pages/Register";
+import NewsDetailsPage from "./pages/NewsDetailsPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -80,6 +81,8 @@ function App() {
             <Route path="profile" element={<UserDetails />} />
 
             <Route path="news" element={<News />} />
+            <Route path="newsdetails" element={<NewsDetailsPage />} />
+
             <Route path="rules" element={<Rules />} />
 
             <Route path="trainings" element={<Trainings />} />
