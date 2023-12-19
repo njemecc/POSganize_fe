@@ -1,6 +1,9 @@
+import React from "react";
 import styles from "./SingleNews.module.css";
+
 const SingleNews = ({ post }) => {
   const { imageUrl, title, author, created_at, text } = post;
+
   return (
     <div className={styles["single-post"]}>
       <div className={styles["image"]}>

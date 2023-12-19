@@ -1,7 +1,6 @@
 .single-post {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   padding: 20px;
   background-color: var(--color-grey-0);
@@ -9,31 +8,46 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.single-post .image {
-  flex: 0 0 30%; /* Širina slike */
+.image {
+  flex: 0 0 40%;
+  height: auto;
+  margin-right: 20px;
 }
 
-.single-post .image img {
+.image img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   border-radius: 8px;
 }
 
-.single-post .content {
-  flex: 0 0 65%; /* Širina teksta */
+.content {
+  flex: 1;
 }
 
-.single-post h2 {
+h2 {
   font-size: 24px;
   margin-bottom: 8px;
 }
 
-.single-post .details {
+.details {
   font-size: 12px;
-  opacity: 0.6; /* Prozirnost */
+  opacity: 0.6;
 }
 
-.single-post .summary {
+.summary {
   font-size: 14px;
-  opacity: 0.8; /* Prozirnost */
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .single-post {
+    flex-direction: column;
+  }
+
+  .image {
+    flex: 0 0 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 }
