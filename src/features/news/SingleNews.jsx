@@ -1,11 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./SingleNews.module.css";
 
 const SingleNews = ({ post }) => {
-  const { imageUrl, title, author, created_at, text } = post;
+  const { imageUrl, title, author, created_at, text, id } = post;
+
+  const navigate = useNavigate();
 
   return (
-    <div className={styles["single-post"]}>
+    <div
+      onClick={() => navigate(`/news/${id}`)}
+      className={styles["single-post"]}
+    >
       <div className={styles["image"]}>
         <img src={imageUrl} alt="News" />
       </div>

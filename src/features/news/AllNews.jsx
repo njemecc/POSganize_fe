@@ -14,6 +14,7 @@ const AllNews = () => {
       In the 1990s, the Gracie family brought their Brazilian jiu-jitsu style, first developed in Brazil from the 1920s, to the United States – which culminated in the founding of the Ultimate Fighting Championship (UFC) promotion company in 1993. The company held an event with almost no rules, mostly due to the influence of Art Davie and Rorion Gracie attempting to replicate vale tudo fights that existed in Brazil[12] and would later implement a different set of rules (example: eliminating kicking a grounded opponent), which differed from other leagues which were more in favour of realistic, street like fights.[13]"`,
       created_at: "2023-12-19",
       author: "John Doe",
+      id: "1",
     },
     {
       imageUrl:
@@ -22,6 +23,7 @@ const AllNews = () => {
       text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas magnam dolore dolores consectetur molestiae quasi, ullam esse, at ipsa ducimus eos eum nulla et illo, id quos impedit maxime? Ad doloremque culpa consectetur atque odit non! Nihil aspernatur magnam eaque, facilis iste consectetur cumque officiis omnis cum esse quas minima maiores, dolore sequi accusamus expedita ex, a quod non labore autem sit recusandae! At quas eius fugiat et id, illum quis odio eligendi veritatis facilis nemo deserunt provident vitae aliquid pariatur corporis ut laboriosam maiores quae consequuntur quibusdam. Quaerat quisquam ex recusandae aut expedita, dignissimos odit magnam reprehenderit sit qui animi reiciendis sed ipsam harum illo iure asperiores perferendis voluptatem eaque culpa repellat autem eum. Alias expedita quos delectus labore, at deleniti, optio numquam, voluptate necessitatibus quasi ullam rem porro consequuntur ducimus corporis amet temporibus! Voluptatem a aut quam saepe tenetur nulla pariatur tempore excepturi sunt, molestiae, quisquam inventore eaque voluptates in provident veritatis nisi expedita id dolor. Enim ducimus ad sint placeat unde excepturi id tempora. Itaque possimus autem ea ducimus consequatur amet unde, non ab, explicabo tempora voluptatibus perferendis modi sapiente, quia doloribus nulla? Esse ad autem qui aspernatur, quia expedita quo ab sapiente, voluptatum itaque architecto sequi! Quisquam sapiente odit illum alias, debitis fuga nisi nesciunt neque, porro consequuntur voluptate, accusamus culpa a est obcaecati excepturi consectetur doloribus voluptas. Voluptates, dolorem ex tenetur ducimus dicta possimus praesentium eius non iusto eaque labore vitae velit maiores, soluta fugiat placeat excepturi autem quia a dignissimos rerum harum repellat. Odit nisi id delectus, velit earum atque deserunt tempore fugiat totam, minima suscipit, voluptatum quas hic quaerat aliquam inventore doloremque sed molestiae. Eaque optio error enim distinctio delectus accusamus aut veniam minima inventore suscipit saepe ipsa autem assumenda debitis molestiae corrupti, at quisquam, explicabo odio beatae omnis? Eaque tempora iure possimus?",
       created_at: "2023-12-18",
       author: "Jane Smith",
+      id: "2",
     },
   ];
 

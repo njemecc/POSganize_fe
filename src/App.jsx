@@ -29,6 +29,7 @@ import ProtectedRoute from "./ui/ProtectedRoute";
 import AdminProtectedRoute from "./ui/AdminProtectedRoute";
 import Register from "./pages/Register";
 import NewsDetailsPage from "./pages/NewsDetailsPage";
+import CreateNewNewsPage from "./pages/CreateNewNewsPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -81,7 +82,8 @@ function App() {
             <Route path="profile" element={<UserDetails />} />
 
             <Route path="news" element={<News />} />
-            <Route path="newsdetails" element={<NewsDetailsPage />} />
+            <Route path="news/:newsId" element={<NewsDetailsPage />} />
+            <Route path="news/create" element={<CreateNewNewsPage />} />
 
             <Route path="rules" element={<Rules />} />
 
