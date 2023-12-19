@@ -1,0 +1,39 @@
+.single-post {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--color-grey-0);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.single-post .image {
+  flex: 0 0 30%; /* Širina slike */
+}
+
+.single-post .image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.single-post .content {
+  flex: 0 0 65%; /* Širina teksta */
+}
+
+.single-post h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.single-post .details {
+  font-size: 12px;
+  opacity: 0.6; /* Prozirnost */
+}
+
+.single-post .summary {
+  font-size: 14px;
+  opacity: 0.8; /* Prozirnost */
+}
