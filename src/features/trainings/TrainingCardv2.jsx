@@ -5,7 +5,7 @@ import Button from "../../ui/Button";
 import { Card } from "@mui/material";
 
 const TrainingCardv2 = ({ training }) => {
-  const { id, name, image, price } = training;
+  const { id, name, image, price, description } = training;
   const navigate = useNavigate();
   return (
     <Card
@@ -15,6 +15,7 @@ const TrainingCardv2 = ({ training }) => {
     >
       <div class="card-content">
         <h2 class="card-title">{name}</h2>
+        <p className="card-body">{`${description.substring(0, 150)}...`}</p>
         <p class="card-body">{price}$</p>
         <Button>Subscribe</Button>
       </div>

@@ -39,7 +39,11 @@ const AllTrainings = () => {
         ))}
       </Box>
       {role === ADMIN && (
-        <Button onClick={() => setShowCreate(true)}>Create New Training</Button>
+        <div style={{ margin: "0 auto" }}>
+          <Button onClick={() => setShowCreate(true)}>
+            Create New Training
+          </Button>
+        </div>
       )}
 
       {showCreate && (
