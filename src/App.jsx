@@ -34,7 +34,7 @@ import CreateNewNewsPage from "./pages/CreateNewNewsPage";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 0,
+      staleTime: 1000 * 5,
     },
   },
 });
@@ -63,6 +63,7 @@ function App() {
                 </AdminProtectedRoute>
               }
             />
+
             <Route
               path="users"
               element={
@@ -83,7 +84,14 @@ function App() {
 
             <Route path="news" element={<News />} />
             <Route path="news/:newsId" element={<NewsDetailsPage />} />
-            <Route path="news/create" element={<CreateNewNewsPage />} />
+            <Route
+              path="create/news"
+              element={
+                <AdminProtectedRoute>
+                  <CreateNewNewsPage />
+                </AdminProtectedRoute>
+              }
+            />
 
             <Route path="rules" element={<Rules />} />
 
