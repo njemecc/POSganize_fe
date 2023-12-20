@@ -1,6 +1,7 @@
 import { backendURL } from "./backend";
 
 export async function createNews(news) {
+  console.log(news);
   const response = await fetch(`${backendURL}/api/v1/clubnews/create`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
