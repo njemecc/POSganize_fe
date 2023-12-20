@@ -101,6 +101,7 @@ const MainNav = () => {
 
         <li>
           <StyledNavLink to="/create/news">
+            <LiaNewspaperSolid />
             <span>Create News</span>
           </StyledNavLink>
         </li>
