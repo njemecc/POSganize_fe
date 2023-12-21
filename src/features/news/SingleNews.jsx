@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./SingleNews.module.css";
 
 const SingleNews = ({ post }) => {
-  const { imageUrl, title, author, created_at, text, id } = post;
+  const { image, title, author, createdAt, description, id } = post;
 
   const navigate = useNavigate();
 
@@ -13,14 +13,14 @@ const SingleNews = ({ post }) => {
       className={styles["single-post"]}
     >
       <div className={styles["image"]}>
-        <img src={imageUrl} alt="News" />
+        <img src={image} alt="News" />
       </div>
       <div className={styles["content"]}>
         <h2>{title}</h2>
         <p className={styles["details"]}>
-          <span>{author}</span> - <span>{created_at}</span>
+          <span>{author}</span> - <span>{createdAt}</span>
         </p>
-        <p className={styles["summary"]}>{text.substring(0, 300)}...</p>
+        <p className={styles["summary"]}>{description.substring(0, 300)}...</p>
       </div>
     </div>
   );
