@@ -28,3 +28,13 @@ export async function getNewsById(id) {
 
   return data;
 }
+
+export async function delteNews(id) {
+  const response = await fetch(`${backendURL}/api/v1/clubnews/delete/${id}`, {
+    method: "DELETE",
+  });
+
+  const data = await response.json();
+
+  return data;
+}
