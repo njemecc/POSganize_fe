@@ -6,10 +6,14 @@ import { useGetNewsById } from "./useGetNewsById";
 import { useState } from "react";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
+import { useDeleteNews } from "./useDeleteNews";
+import { useNavigate, useParams } from "react-router-dom";
 
 const NewsDetails = () => {
   const { news, loadingNews } = useGetNewsById();
   const [showDelete, setShowDelete] = useState(false);
+  const { deleteNews, isDeleting } = useDeleteNews();
+  const { newsId } = useParams();
 
   if (loadingNews) return <Spinner />;
 
@@ -32,7 +36,10 @@ const NewsDetails = () => {
       </Button>
       {showDelete && (
         <Modal onClose={() => setShowDelete(false)}>
-          <ConfirmDelete closeModal={() => setShowDelete(false)} />
+          <ConfirmDelete
+            onConfirm={() => deleteNews(newsId)}
+            closeModal={() => setShowDelete(false)}
+          />
         </Modal>
       )}
     </div>
