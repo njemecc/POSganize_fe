@@ -28,11 +28,13 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import AdminProtectedRoute from "./ui/AdminProtectedRoute";
 import Register from "./pages/Register";
+import NewsDetailsPage from "./pages/NewsDetailsPage";
+import CreateNewNewsPage from "./pages/CreateNewNewsPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 0,
+      staleTime: 1000 * 5,
     },
   },
 });
@@ -61,6 +63,7 @@ function App() {
                 </AdminProtectedRoute>
               }
             />
+
             <Route
               path="users"
               element={
@@ -80,6 +83,16 @@ function App() {
             <Route path="profile" element={<UserDetails />} />
 
             <Route path="news" element={<News />} />
+            <Route path="news/:newsId" element={<NewsDetailsPage />} />
+            <Route
+              path="create/news"
+              element={
+                <AdminProtectedRoute>
+                  <CreateNewNewsPage />
+                </AdminProtectedRoute>
+              }
+            />
+
             <Route path="rules" element={<Rules />} />
 
             <Route path="trainings" element={<Trainings />} />

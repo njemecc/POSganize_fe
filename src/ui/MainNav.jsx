@@ -7,6 +7,7 @@ import { FaRegNewspaper } from "react-icons/fa";
 import { IoBarChartOutline } from "react-icons/io5";
 import { RiFilePaper2Line } from "react-icons/ri";
 import { MdOutlineSportsMartialArts } from "react-icons/md";
+import { LiaNewspaperSolid } from "react-icons/lia";
 
 //router
 import { NavLink } from "react-router-dom";
@@ -97,6 +98,14 @@ const MainNav = () => {
             <span>News</span>
           </StyledNavLink>
         </li>
+
+        <li>
+          <StyledNavLink to="/create/news">
+            <LiaNewspaperSolid />
+            <span>Create News</span>
+          </StyledNavLink>
+        </li>
+
         <li>
           <StyledNavLink to="/rules">
             <RiFilePaper2Line />

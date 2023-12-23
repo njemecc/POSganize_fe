@@ -9,7 +9,7 @@ export function useCreateTraining() {
   const { mutate: createTraining, isLoading: isCreating } = useMutation({
     mutationFn: createTrainingApi,
     onSuccess: () => {
-      toast.success("New training uccessfully created ");
+      toast.success("New training successfully created ");
       queryClient.invalidateQueries({
         queryKey: ["trainings"],
       });
