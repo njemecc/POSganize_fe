@@ -1,3 +1,13 @@
+/*remove scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .all-posts {
   display: flex;
   flex-wrap: wrap;
