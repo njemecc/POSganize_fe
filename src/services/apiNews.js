@@ -12,9 +12,10 @@ export async function createNews(news) {
   return data;
 }
 
-export async function getAllNews(pageNumber = 0) {
+export async function getAllNews({ pageParam = 0 }) {
+  console.log(pageParam);
   const response = await fetch(
-    `${backendURL}/api/v1/clubnews/pageable?pageNumber=${pageNumber}`
+    `${backendURL}/api/v1/clubnews/pageable?pageNumber=${pageParam}`
   );
   const data = await response.json();
   return data;
