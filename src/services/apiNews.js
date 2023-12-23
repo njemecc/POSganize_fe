@@ -12,7 +12,7 @@ export async function createNews(news) {
   return data;
 }
 
-export async function getAllNews({ pageNumber }) {
+export async function getAllNews(pageNumber = 0) {
   const response = await fetch(
     `${backendURL}/api/v1/clubnews/pageable?pageNumber=${pageNumber}`
   );
