@@ -20,3 +20,21 @@ export async function getAllNews({ pageParam = 0 }) {
   const data = await response.json();
   return data;
 }
+
+export async function getNewsById(id) {
+  const response = await fetch(`${backendURL}/api/v1/clubnews/get/${id}`);
+
+  const data = await response.json();
+
+  return data;
+}
+
+export async function deleteNews(id) {
+  const response = await fetch(`${backendURL}/api/v1/clubnews/delete/${id}`, {
+    method: "DELETE",
+  });
+
+  const data = await response.json();
+
+  return data;
+}
