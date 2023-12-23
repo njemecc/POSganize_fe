@@ -1,10 +1,15 @@
+import Button from "../../ui/Button";
 import React from "react";
 import Spinner from "../../ui/Spinner";
 import styles from "./NewsDetails.module.css";
 import { useGetNewsById } from "./useGetNewsById";
+import { useState } from "react";
+import Modal from "../../ui/Modal";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
 const NewsDetails = () => {
   const { news, loadingNews } = useGetNewsById();
+  const [showDelete, setShowDelete] = useState(false);
 
   if (loadingNews) return <Spinner />;
 
@@ -22,6 +27,14 @@ const NewsDetails = () => {
         <img src={image} alt="Blog Post" />
         <p className={styles["description"]}>{description}</p>
       </div>
+      <Button onClick={() => setShowDelete(true)} variation="danger">
+        Delete
+      </Button>
+      {showDelete && (
+        <Modal onClose={() => setShowDelete(false)}>
+          <ConfirmDelete closeModal={() => setShowDelete(false)} />
+        </Modal>
+      )}
     </div>
   );
 };
