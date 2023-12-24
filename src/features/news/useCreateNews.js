@@ -8,8 +8,7 @@ export function useCreateNews() {
 
   const {
     mutate: createNews,
-    isLoading,
-    isCreating,
+    isLoading:isCreating,
   } = useMutation({
     mutationFn: createNewsApi,
     onSuccess: () => {
