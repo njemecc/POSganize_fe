@@ -48,6 +48,14 @@ const Heading = styled.h1`
       font-weight: 600;
       text-align: center;
     `}
+
+    ${(props) =>
+    props.as === "h2-left" &&
+    css`
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: left;
+    `}
     
     ${(props) =>
     props.as === "h3" &&
