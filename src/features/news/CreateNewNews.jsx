@@ -36,9 +36,9 @@ const CreateNewNews = () => {
 
     createNews(newPost);
 
-    // setTitle("");
-    // setDescription("");
-    // setImage("");
+    setTitle("");
+    setDescription("");
+    setImage("");
   };
 
   return (
