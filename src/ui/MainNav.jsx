@@ -99,12 +99,13 @@ const MainNav = () => {
           </StyledNavLink>
         </li>
 
-        <li>
+{role === ADMIN &&  <li>
           <StyledNavLink to="/create/news">
             <LiaNewspaperSolid />
             <span>Create News</span>
           </StyledNavLink>
-        </li>
+        </li>}
+      
 
         <li>
           <StyledNavLink to="/rules">

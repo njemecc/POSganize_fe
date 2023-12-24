@@ -7,13 +7,17 @@ import { useState } from "react";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import { useDeleteNews } from "./useDeleteNews";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
+import { useUser } from "../authentication/useUser";
+import { ADMIN } from "../../utils/roles";
 
 const NewsDetails = () => {
   const { news, loadingNews } = useGetNewsById();
   const [showDelete, setShowDelete] = useState(false);
   const { deleteNews, isDeleting } = useDeleteNews();
   const { newsId } = useParams();
+
+  const {role} = useUser()
 
   if (loadingNews) return <Spinner />;
 
@@ -31,9 +35,12 @@ const NewsDetails = () => {
         <img src={image} alt="Blog Post" />
         <p className={styles["description"]}>{description}</p>
       </div>
-      <Button onClick={() => setShowDelete(true)} variation="danger">
+      {
+        role === ADMIN && <Button onClick={() => setShowDelete(true)} variation="danger">
         Delete
       </Button>
+      }
+      
       {showDelete && (
         <Modal onClose={() => setShowDelete(false)}>
           <ConfirmDelete
