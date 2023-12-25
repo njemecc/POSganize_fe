@@ -1,16 +1,20 @@
 //styles
 import styles from "./RulesList.module.css";
 
+//constants
+import { ADMIN } from "../../utils/roles";
+
 //components
 import SingleRule from "./SingleRule";
 import Spinner from "../../ui/Spinner";
+import CreateRuleForm from "./CreateRuleForm";
+import Button from "../../ui/Button";
+import Modal from "../../ui/Modal";
 //hooks
 import { useGetRules } from "./useGetRules";
-import Button from "../../ui/Button";
 import { useUser } from "../authentication/useUser";
-import { ADMIN } from "../../utils/roles";
 import { useState } from "react";
-import Modal from "../../ui/Modal";
+
 const RulesList = () => {
 
 const {rules,isLoading} = useGetRules()
