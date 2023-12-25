@@ -11,10 +11,16 @@ import Menus from "../../ui/Menus";
 import { useState } from "react";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
+import { useDeleteRule } from "./useDeleteRule";
 
 const SingleRule = ({ rule, onDelete }) => {
   const [showDelete, setShowDelete] = useState(false);
   const [whatModal, setWhatModal] = useState(rule.id);
+
+  const {
+    isDeleting,
+    deleteRule,
+  } = useDeleteRule()
 
   return (
     <li className={styles["single-rule"]}>
