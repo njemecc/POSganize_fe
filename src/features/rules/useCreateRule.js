@@ -1,20 +1,20 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 
-import { createNews as createNewsApi } from "../../services/apiNews";
+import { createRule as createRuleApi } from "../../services/apiRules";
 
-export function useCreateNews() {
+export function useCreateRule() {
   const queryClient = useQueryClient();
 
   const {
-    mutate: createNews,
+    mutate: createRule,
     isLoading:isCreating,
   } = useMutation({
-    mutationFn: createNewsApi,
+    mutationFn: createRuleApi,
     onSuccess: () => {
-      toast.success("News News successfully created");
+      toast.success("News Rule successfully created");
       queryClient.invalidateQueries({
-        queryKey: ["news"],
+        queryKey: ["rules"],
       });
     },
     onError: (err) => {
@@ -23,5 +23,5 @@ export function useCreateNews() {
     },
   });
 
-  return { createNews, isCreating };
+  return { createRule, isCreating };
 }
