@@ -14,39 +14,54 @@ import Modal from "../../ui/Modal";
 import { useGetRules } from "./useGetRules";
 import { useUser } from "../authentication/useUser";
 import { useState } from "react";
+import Menus from "../../ui/Menus";
 
 const RulesList = () => {
+  const { rules, isLoading } = useGetRules();
+  const { role } = useUser();
+  const [showCreate, setShowCreate] = useState(false);
 
-const {rules,isLoading} = useGetRules()
-const {role} = useUser()
-const [showCreate,setShowCreate] = useState(false)
 
-if(isLoading) return <Spinner/>
+
+  if (isLoading) return <Spinner />;
 
   return (
-    <div>
-      <ul className={styles["rules-list-wrapper"]}>
-        {rules?.map((rule) => (
-          <SingleRule rule={rule} key={rule.id} />
-        ))}
-      </ul>
-      {
-        role === ADMIN && <Button onClick={() => {
-          setShowCreate(true)
-        }}>Create new</Button>
+    <Menus>
+      <div>
+        <ul className={styles["rules-list-wrapper"]}>
+          {rules?.map((rule) => (
+            <SingleRule
+              rule={rule}
+              key={rule.id}
+            />
+          ))}
+        </ul>
+        {role === ADMIN && (
+          <Button
+            onClick={() => {
+              setShowCreate(true);
+            }}
+          >
+            Create new
+          </Button>
+        )}
+        {showCreate && (
+          <Modal
+            onClose={() => {
+              setShowCreate(false);
+            }}
+          >
+            <CreateRuleForm
+              onClose={() => {
+                setShowCreate(false);
+              }}
+            />
+          </Modal>
+        )}
 
-      }
-      {
-        showCreate &&  <Modal onClose={() => {
-          setShowCreate(false)
-        }}>
-          <CreateRuleForm onClose={() => {
-            setShowCreate(false)
-          }}/>
-        </Modal>
-      }
-      
-    </div>
+
+      </div>
+    </Menus>
   );
 };
 
