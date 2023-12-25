@@ -19,3 +19,14 @@ export async function createRule(rule) {
   const data = await response.json();
   return data;
 }
+
+
+export async function deleteRule(id) {
+  const response = await fetch(`${backendURL}/api/v1/clubrules/delete/${id}`, {
+    method: "DELETE",
+  });
+
+  const data = await response.json();
+
+  return data;
+}
