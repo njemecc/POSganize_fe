@@ -7,6 +7,8 @@ import DarkModeToggle from "./DarkModeToggle";
 
 import { useState, useEffect } from "react";
 import Heading from "./Heading";
+import { Avatar } from "@mui/material";
+import { stringAvatar} from "../utils/helpers";
 
 const StyledHeaderMenu = styled.ul`
   display: flex;
@@ -18,8 +20,13 @@ const HeaderMenu = () => {
     localStorage.getItem("user").firstName
   );
 
+  const [lastName, setLastName] = useState(
+    localStorage.getItem("user").lastName
+  );
+
   useEffect(() => {
     setFirstName(JSON.parse(localStorage.getItem("user")).firstName);
+    setLastName(JSON.parse(localStorage.getItem("user")).lastName);
   }, [localStorage.getItem("user")]);
 
   const navigate = useNavigate();
@@ -32,12 +39,12 @@ const HeaderMenu = () => {
       </li> */}
       <div
         style={{
-          display: "flex",
+          display: "flex",  
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <Heading as="h8">{`${firstName}`}</Heading>
+        <Avatar {...stringAvatar(`${firstName} ${lastName}`)} />
       </div>
 
       <li>
