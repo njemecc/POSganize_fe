@@ -12,8 +12,14 @@ import { useState } from "react";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import { useDeleteRule } from "./useDeleteRule";
+import { useUser } from "../authentication/useUser";
+import { ADMIN } from "../../utils/roles";
 
-const SingleRule = ({ rule, onDelete }) => {
+const SingleRule = ({ rule }) => {
+
+  const {role} = useUser()
+
+
   const [showDelete, setShowDelete] = useState(false);
   const [whatModal, setWhatModal] = useState(rule.id);
 
@@ -29,7 +35,9 @@ const SingleRule = ({ rule, onDelete }) => {
         <Avatar alt="Remy Sharp" src={rule.image} />{" "}
         <Heading as="h1">{rule.description}</Heading>{" "}
       </div>
-      <Menus.Menu>
+      
+      {
+        role === ADMIN && <Menus.Menu>
         <Menus.Toggle id={rule.id} />
         <Menus.List id={rule.id}>
           <Menus.Button
@@ -43,7 +51,9 @@ const SingleRule = ({ rule, onDelete }) => {
           </Menus.Button>
         </Menus.List>
       </Menus.Menu>
-      {showDelete && whatModal === rule.id ? (
+      }
+      
+      { role === ADMIN && showDelete && whatModal === rule.id ? (
         <Modal onClose={() => setShowDelete(false)}>
           <ConfirmDelete
             onConfirm={() => deleteRule(rule.id)}
