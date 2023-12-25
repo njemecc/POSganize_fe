@@ -40,7 +40,9 @@ if(isLoading) return <Spinner/>
         showCreate &&  <Modal onClose={() => {
           setShowCreate(false)
         }}>
-          <CreateRuleForm/>
+          <CreateRuleForm onClose={() => {
+            setShowCreate(false)
+          }}/>
         </Modal>
       }
       

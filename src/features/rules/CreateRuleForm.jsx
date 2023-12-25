@@ -6,8 +6,13 @@ import Heading from "../../ui/Heading";
 //hooks
 import { useRef } from "react";
 import Button from "../../ui/Button";
+import { createRule } from "../../services/apiRules";
+import { useCreateRule } from "./useCreateRule";
 
-const CreateRuleForm = () => {
+const CreateRuleForm = ({onClose}) => {
+
+   const  {createRule,isCreating} = useCreateRule()
+
   const labelStyles = {
     fontSize: "1.5rem",
   };
@@ -16,6 +21,8 @@ const CreateRuleForm = () => {
     fontSize: "1.5rem",
   };
 
+  
+
   //ref variables
   const nameRef = useRef()
   const descriptionRef = useRef()
@@ -23,8 +30,14 @@ const CreateRuleForm = () => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault()
-   //create logic
    
+    createRule({
+        name:nameRef.current.value,
+        description:descriptionRef.current.value,
+        image:imageRef.current.value
+    })
+
+    onClose()
   }
 
   return (
