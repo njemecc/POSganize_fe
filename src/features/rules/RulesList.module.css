@@ -1,3 +1,27 @@
-.rules-list-wrapper{width:80% ;margin:5rem auto; display:flex ;flex-direction:column ;gap:2rem;align-items:center; 
-    padding:40px;
-    background-Color:#f9f9f9;border-radius:8px;box-Shadow: 0 0 10px rgba(0, 0, 0, 0.1) ;}
+.rules-list-wrapper {
+  width: 100%;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+    .rules-list-wrapper {
+      width: 90%; 
+      padding: 20px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .rules-list-wrapper {
+      width: 95%; 
+      padding: 10px;
+      margin: 3rem auto; 
+    }
+  }
