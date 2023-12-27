@@ -4,9 +4,23 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
 import { Card } from "@mui/material";
 
+//redux
+import { cartActions } from "../../store/slices/cartSlice";
+import { useDispatch } from "react-redux";
+import { toast } from "react-hot-toast";
+
 const TrainingCardv2 = ({ training }) => {
   const { id, name, image, price, description } = training;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const addTrainingToCartHandler = (e) => {
+    e.stopPropagation();
+    dispatch(cartActions.addToCart(training));
+
+    toast.success(`${training.name} succesfully added to cart`);
+  };
+
   return (
     <Card
       style={{ backgroundImage: `url(${image})` }}
@@ -17,7 +31,7 @@ const TrainingCardv2 = ({ training }) => {
         <h2 class="card-title">{name}</h2>
         <p className="card-body">{`${description.substring(0, 150)}...`}</p>
         <p class="card-body">{price}$</p>
-        <Button>Subscribe</Button>
+        <Button onClick={addTrainingToCartHandler}>Subscribe</Button>
       </div>
     </Card>
   );
