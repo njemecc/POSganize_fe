@@ -18,6 +18,8 @@ import Training from "./pages/Training";
 import Register from "./pages/Register";
 import NewsDetailsPage from "./pages/NewsDetailsPage";
 import CreateNewNewsPage from "./pages/CreateNewNewsPage";
+import CartPage from "./pages/CartPage";
+import ErrorPage from "./pages/ErrorPage";
 
 //toastr
 import { Toaster } from "react-hot-toast";
@@ -98,6 +100,10 @@ function App() {
               />
 
               <Route path="rules" element={<Rules />} />
+              <Route path="cart" element={<CartPage />} />
+
+              <Route path="success" element={<UserDetails />} />
+              <Route path="failure" element={<ErrorPage />} />
 
               <Route path="trainings" element={<Trainings />} />
               <Route path="trainings/:trainingId" element={<Training />} />
