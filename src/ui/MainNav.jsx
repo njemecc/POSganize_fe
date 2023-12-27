@@ -2,6 +2,7 @@
 import styled from "styled-components";
 //icons
 import { HiOutlineUsers } from "react-icons/hi2";
+import { FaShoppingCart } from "react-icons/fa";
 
 import { FaRegNewspaper } from "react-icons/fa";
 import { IoBarChartOutline } from "react-icons/io5";
@@ -93,19 +94,26 @@ const MainNav = () => {
           </StyledNavLink>
         </li>
         <li>
+          <StyledNavLink to="/cart">
+            <FaShoppingCart />
+            <span>Your Cart</span>
+          </StyledNavLink>
+        </li>
+        <li>
           <StyledNavLink to="/news">
             <FaRegNewspaper />
             <span>News</span>
           </StyledNavLink>
         </li>
 
-{role === ADMIN &&  <li>
-          <StyledNavLink to="/create/news">
-            <LiaNewspaperSolid />
-            <span>Create News</span>
-          </StyledNavLink>
-        </li>}
-      
+        {role === ADMIN && (
+          <li>
+            <StyledNavLink to="/create/news">
+              <LiaNewspaperSolid />
+              <span>Create News</span>
+            </StyledNavLink>
+          </li>
+        )}
 
         <li>
           <StyledNavLink to="/rules">
