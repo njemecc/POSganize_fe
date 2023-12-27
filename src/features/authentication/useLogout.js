@@ -13,7 +13,7 @@ export function useLogout() {
       queryClient.removeQueries();
       navigate("/login");
       localStorage.removeItem("user");
-      toast.succes("Successfully logged out ");
+      toast.success("Successfully logged out ");
     },
     onError: (err) => console.error(err),
   });
