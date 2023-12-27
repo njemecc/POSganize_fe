@@ -6,13 +6,24 @@ import { useForm } from "react-hook-form";
 import { useCreateUser } from "../users/useCreateUser";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Avatar } from "@mui/material";
+import { readFileAsBlob } from "../../utils/helpers";
 
 const RegisterForm = () => {
   const { createUser, isCreating } = useCreateUser();
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    createUser(data);
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+  };
+
+  const onSubmit = async (data) => {
+    const image = await readFileAsBlob(selectedFile);
+
+    createUser({ ...data, image: Array.from(image) });
     navigate("/login");
   };
 
@@ -102,6 +113,33 @@ const RegisterForm = () => {
           style={{ width: "100%" }}
           {...register("phoneNumber")}
         />
+        <label
+          htmlFor="avatarInput"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            cursor: "pointer",
+            textAlign: "center",
+            padding: "0.5rem",
+          }}
+        >
+          <Avatar src="" />
+          {selectedFile && (
+            <p style={{ fontSize: "1rem" }}>
+              Selected file: {selectedFile.name}{" "}
+            </p>
+          )}
+          <input
+            id="avatarInput"
+            type="file"
+            accept=".jpg, .jpeg, .png, .gif"
+            style={{
+              display: "none",
+            }}
+            onChange={handleFileChange}
+          />
+        </label>
         <Button
           type="submit"
           variant="contained"
