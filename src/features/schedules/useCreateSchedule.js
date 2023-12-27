@@ -11,7 +11,7 @@ export function useCreateSchedule() {
     useMutation({
       mutationFn: createScheduleByTrainingIdApi,
       onSuccess: () => {
-        toast.success("New schedule uccessfully created ");
+        toast.success("New schedule successfully created ");
         queryClient.invalidateQueries({
           queryKey: ["training", trainingId],
         });
