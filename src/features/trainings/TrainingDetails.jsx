@@ -38,13 +38,36 @@ const TrainingDetails = () => {
   return (
     <div>
       <Heading as="h0">{training?.name.toUpperCase()}</Heading>
-      <Row type="horizontal" style={{ marginTop: "5rem" }}>
-        <div style={{ width: "50%" }}>
-          <img src={training?.image} />
+
+      <Row
+        type="horizontal"
+        style={{ marginTop: "5rem", display: "flex", alignItems: "flex-start" }}
+      >
+        <div style={{ width: "50%", height: "40rem" }}>
+          <img
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              borderRadius: "15px",
+              transition: "transform 0.3s ease-in-out",
+            }}
+            src={training?.image}
+          />
         </div>
 
-        <Row style={{ width: "45%" }}>
-          <Heading as="h5">{training?.description}</Heading>
+        <Row
+          style={{
+            backgroundColor: "f9fafb",
+            padding: "1.5rem",
+            width: "45%",
+            boxShadow:
+              "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+          }}
+        >
+          <Heading style={{}} as="h5">
+            {training?.description}
+          </Heading>
           {role === "ROLE_ADMIN" && (
             <div style={{ display: "flex", gap: "1rem" }}>
               <Button
