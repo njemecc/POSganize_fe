@@ -16,6 +16,7 @@
     "@mui/material": "^5.14.18",
     "@mui/styled-engine-sc": "^6.0.0-alpha.6",
     "@mui/x-date-pickers": "^6.18.2",
+    "@reduxjs/toolkit": "^2.0.1",
     "@tanstack/react-query": "^5.8.4",
     "@tanstack/react-query-devtools": "^5.8.4",
     "date-fns": "^2.30.0",
@@ -28,8 +29,10 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.12.0",
     "react-infinite-scroll-component": "^6.1.0",
+    "react-redux": "^9.0.4",
     "react-router-dom": "^6.19.0",
     "recharts": "^2.10.3",
+    "redux": "^5.0.1",
     "styled-components": "^6.1.1"
   },
   "devDependencies": {
