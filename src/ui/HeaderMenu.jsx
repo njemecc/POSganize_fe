@@ -8,7 +8,7 @@ import DarkModeToggle from "./DarkModeToggle";
 import { useState, useEffect } from "react";
 import Heading from "./Heading";
 import { Avatar } from "@mui/material";
-import { stringAvatar} from "../utils/helpers";
+import { stringAvatar } from "../utils/helpers";
 
 const StyledHeaderMenu = styled.ul`
   display: flex;
@@ -24,27 +24,37 @@ const HeaderMenu = () => {
     localStorage.getItem("user").lastName
   );
 
+  const [image, setImage] = useState(localStorage.getItem("user").image);
+
   useEffect(() => {
     setFirstName(JSON.parse(localStorage.getItem("user")).firstName);
     setLastName(JSON.parse(localStorage.getItem("user")).lastName);
+    setImage(JSON.parse(localStorage.getItem("user")).image);
   }, [localStorage.getItem("user")]);
 
   const navigate = useNavigate();
   return (
     <StyledHeaderMenu>
-      {/* <li>
-        <ButtonIcon onClick={() => navigate("/account")}>
-          <HiOutlineUser />
-        </ButtonIcon>
-      </li> */}
       <div
         style={{
-          display: "flex",  
+          display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <Avatar {...stringAvatar(`${firstName} ${lastName}`)} />
+        {image ? (
+          <Avatar
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/profile")}
+            src={`data:image/png;base64,${image}`}
+          />
+        ) : (
+          <Avatar
+            style={{ cursor: "pointer" }}
+            onClick={() => navigate("/profile")}
+            {...stringAvatar(`${firstName} ${lastName}`)}
+          />
+        )}
       </div>
 
       <li>
