@@ -14,7 +14,7 @@ import { LiaNewspaperSolid } from "react-icons/lia";
 import { NavLink } from "react-router-dom";
 //hooks
 import { useUser } from "../features/authentication/useUser";
-import { ADMIN } from "../utils/roles";
+import { ADMIN, USER } from "../utils/roles";
 import Spinner from "./Spinner";
 //constants
 
@@ -93,12 +93,15 @@ const MainNav = () => {
             <span>Trainings</span>
           </StyledNavLink>
         </li>
-        <li>
-          <StyledNavLink to="/cart">
-            <FaShoppingCart />
-            <span>Your Cart</span>
-          </StyledNavLink>
-        </li>
+        {role === USER && (
+          <li>
+            <StyledNavLink to="/cart">
+              <FaShoppingCart />
+              <span>Checkout</span>
+            </StyledNavLink>
+          </li>
+        )}
+
         <li>
           <StyledNavLink to="/news">
             <FaRegNewspaper />
