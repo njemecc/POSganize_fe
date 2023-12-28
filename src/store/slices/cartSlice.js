@@ -12,14 +12,19 @@ const cartSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       const newItem = action.payload;
-      const existingItem = state.items?.find((item) => item.id === newItem.id);
+      const existingItem = state.cartItems?.find(
+        (item) => item.id === newItem.id
+      );
 
       state.totalQuantity++;
 
       if (!existingItem) {
         state.cartItems.push(newItem);
+        toast.success(
+          `${newItem.name} succesfully added to membership package`
+        );
       } else {
-        toast.error(`${newItem.name} alredy exists in your cart`);
+        toast.error(`${newItem.name} alredy exists in your membership package`);
       }
     },
     removeFromCart(state, action) {
