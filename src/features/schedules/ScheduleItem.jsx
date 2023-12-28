@@ -6,8 +6,10 @@ import Button from "../../ui/Button";
 import { useUser } from "../authentication/useUser";
 import { ADMIN } from "../../utils/roles";
 
-const ScheduleItem = ({ schedule, deleteClicked }) => {
+const ScheduleItem = ({ schedule, deleteClicked, big }) => {
   const { role } = useUser();
+
+  const tableCellStyles = { fontSize: big ? "1.4rem" : "1.1rem" };
 
   return (
     <TableRow
@@ -15,17 +17,17 @@ const ScheduleItem = ({ schedule, deleteClicked }) => {
         "&:last-child td, &:last-child th": { border: 0 },
       }}
     >
-      <TableCell style={{ fontSize: "1.1rem" }} component="th" scope="row">
+      <TableCell style={tableCellStyles} component="th" scope="row">
         {schedule.scheduleName}
       </TableCell>
-      <TableCell style={{ fontSize: "1.1rem" }} align="right">
+      <TableCell style={tableCellStyles} align="right">
         {schedule.scheduleDay}
       </TableCell>
-      <TableCell style={{ fontSize: "1.1rem" }} align="right">
+      <TableCell style={tableCellStyles} align="right">
         {schedule.scheduleTime}
       </TableCell>
       {role === ADMIN && (
-        <TableCell style={{ fontSize: "1.1rem" }} align="right">
+        <TableCell style={tableCellStyles} align="right">
           <Button type="button" size="small">
             <HiTrash onClick={() => deleteClicked(schedule.id)} />
           </Button>

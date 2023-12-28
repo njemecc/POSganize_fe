@@ -2,6 +2,7 @@
 import styled from "styled-components";
 //icons
 import { HiOutlineUsers } from "react-icons/hi2";
+import { FaShoppingCart } from "react-icons/fa";
 
 import { FaRegNewspaper } from "react-icons/fa";
 import { IoBarChartOutline } from "react-icons/io5";
@@ -13,7 +14,7 @@ import { LiaNewspaperSolid } from "react-icons/lia";
 import { NavLink } from "react-router-dom";
 //hooks
 import { useUser } from "../features/authentication/useUser";
-import { ADMIN } from "../utils/roles";
+import { ADMIN, USER } from "../utils/roles";
 import Spinner from "./Spinner";
 //constants
 
@@ -92,6 +93,15 @@ const MainNav = () => {
             <span>Trainings</span>
           </StyledNavLink>
         </li>
+        {role === USER && (
+          <li>
+            <StyledNavLink to="/cart">
+              <FaShoppingCart />
+              <span>Checkout</span>
+            </StyledNavLink>
+          </li>
+        )}
+
         <li>
           <StyledNavLink to="/news">
             <FaRegNewspaper />
@@ -99,13 +109,14 @@ const MainNav = () => {
           </StyledNavLink>
         </li>
 
-{role === ADMIN &&  <li>
-          <StyledNavLink to="/create/news">
-            <LiaNewspaperSolid />
-            <span>Create News</span>
-          </StyledNavLink>
-        </li>}
-      
+        {role === ADMIN && (
+          <li>
+            <StyledNavLink to="/create/news">
+              <LiaNewspaperSolid />
+              <span>Create News</span>
+            </StyledNavLink>
+          </li>
+        )}
 
         <li>
           <StyledNavLink to="/rules">

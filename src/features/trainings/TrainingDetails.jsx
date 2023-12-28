@@ -38,51 +38,91 @@ const TrainingDetails = () => {
   return (
     <div>
       <Heading as="h0">{training?.name.toUpperCase()}</Heading>
-      <Row type="horizontal" style={{ marginTop: "5rem" }}>
-        <div style={{ width: "50%" }}>
-          <img src={training?.image} />
+
+      <Row
+        type="horizontal"
+        style={{ marginTop: "5rem", display: "flex", alignItems: "flex-start" }}
+      >
+        <div style={{ width: "50%", height: "40rem" }}>
+          <img
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              borderRadius: "15px",
+              transition: "transform 0.3s ease-in-out",
+            }}
+            src={training?.image}
+          />
         </div>
 
-        <Row style={{ width: "45%" }}>
+        <Row
+          style={{
+            backgroundColor: "f9fafb",
+            padding: "1.5rem",
+            width: "45%",
+            boxShadow:
+              "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+          }}
+        >
           <Heading as="h5">{training?.description}</Heading>
-          {role === "ROLE_ADMIN" && (
-            <div style={{ display: "flex", gap: "1rem" }}>
-              <Button
-                onClick={() => {
-                  setShowEdit(true);
-                  setWhatModal(training?.id);
-                }}
-                variant="contained"
-                sx={{ fontSize: "1.3rem" }}
-              >
-                <HiPencil />
-              </Button>
-              <Button
-                sx={{ fontSize: "1.3rem" }}
-                onClick={() => {
-                  setShowDeleting(true);
-                  setWhatModal(training?.id);
-                }}
-                variant="contained"
-                color="error"
-              >
-                <HiTrash />
-              </Button>
-            </div>
-          )}
         </Row>
+      </Row>
+      <Row
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "5rem",
+          width: "50%",
+          marginRight: "auto",
+          marginTop: "2rem",
+        }}
+      >
+        {role === "ROLE_ADMIN" && (
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-around",
+            }}
+          >
+            <Button
+              onClick={() => {
+                setShowEdit(true);
+                setWhatModal(training?.id);
+              }}
+              variant="contained"
+              sx={{ fontSize: "2rem", width: "10rem", height: "3rem" }}
+            >
+              <HiPencil />
+            </Button>
+            <Button
+              sx={{ fontSize: "2rem", width: "10rem", height: "3rem" }}
+              onClick={() => {
+                setShowDeleting(true);
+                setWhatModal(training?.id);
+              }}
+              variant="contained"
+              color="error"
+            >
+              <HiTrash />
+            </Button>
+          </div>
+        )}
       </Row>
       <Row style={{ marginTop: "8rem" }}>
         <Heading as="h3">Schedules</Heading>
         <ScheduleTable
           schedules={training?.schedule}
           deleteClicked={deleteSchedule}
+          trainingDetails={true}
         />
         {role === ADMIN && (
           <Button
             onClick={() => setShowAddSchedule(true)}
             variant="contained"
             type="button"
+            sx={{ fontSize: "1.2rem", width: "22rem", margin: "auto" }}
           >
             Add new schedule
           </Button>

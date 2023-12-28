@@ -6,19 +6,34 @@ import UserDetailsHeader from "../features/users/userDetailsHeader";
 import UserDetailsHeaderv2 from "../features/users/UserDetailsHeaderv2";
 import Heading from "../ui/Heading";
 import Spinner from "../ui/Spinner";
-import { ADMIN } from "../utils/roles";
+import { ADMIN, USER } from "../utils/roles";
 import { useState, useEffect } from "react";
+import { useGetUser } from "../features/users/useGetUser";
 
 const UserDetails = () => {
   const { role, isLoading } = useUser();
+  const { user, loadingUser } = useGetUser();
 
   const [image, setImage] = useState(localStorage.getItem("user").image);
 
   useEffect(() => {
-    setImage(JSON.parse(localStorage.getItem("user")).image);
-  }, [localStorage.getItem("user")]);
+    if (role === ADMIN && !isLoading && !loadingUser) {
+      console.log(user);
+      user.image
+        ? setImage(user.image)
+        : setImage(
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/800px-User-avatar.svg.png"
+          );
+    } else if (role === USER && !image) {
+      setImage(
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/800px-User-avatar.svg.png"
+      );
+    } else {
+      setImage(JSON.parse(localStorage.getItem("user")).image);
+    }
+  }, [localStorage.getItem("user"), role, loadingUser, isLoading]);
 
-  isLoading && <Spinner />;
+  (isLoading || loadingUser) && <Spinner />;
 
   return (
     <>
@@ -38,7 +53,7 @@ const UserDetails = () => {
             borderRadius: "15px",
             objectFit: "contain",
           }}
-          src={`data:image/png;base64,${image}`}
+          src={!user?.image ? image : `data:image/png;base64,${image}`}
         ></img>
       </div>
       <UserDetailsHeaderv2 />

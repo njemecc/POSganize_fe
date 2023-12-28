@@ -57,7 +57,7 @@ const CreateMembershipForm = ({ onClose }) => {
 
   return (
     <>
-      <form>
+      <form style={{ padding: "1rem" }}>
         <div>
           <Heading as="h2">{"Create a new Membership"}</Heading>
         </div>
@@ -65,12 +65,13 @@ const CreateMembershipForm = ({ onClose }) => {
           {trainings.map((training) => (
             <ListItem key={training.name} dense>
               <FormControlLabel
-                sx={{ fontSize: "5rem" }}
-                style={{ fontSize: "5rem" }}
+                label={
+                  <span style={{ fontSize: "1.5rem" }}>{training.name}</span>
+                }
+                sx={{ fontSize: 28 }}
                 control={
                   <Checkbox
-                    sx={{ fontSize: "5rem" }}
-                    style={{ fontSize: "5rem" }}
+                    sx={{ "& .MuiSvgIcon-root": { fontSize: "2.5rem" } }}
                     onChange={(data) => {
                       if (data.target.checked) {
                         setTrainingsToSend((prevTrainings) => [
@@ -88,7 +89,6 @@ const CreateMembershipForm = ({ onClose }) => {
                     }}
                   />
                 }
-                label={training.name}
               />
 
               <ListItemText />
