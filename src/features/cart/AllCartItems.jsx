@@ -1,4 +1,6 @@
-import TrainingCardv3 from "./TrainingCardv3";
+import CartItem from "./CartItem";
+import styles from "./AllCartItems.module.css";
+
 //redux
 import { useSelector } from "react-redux";
 import Button from "../../ui/Button";
@@ -10,6 +12,7 @@ import { useUser } from "../authentication/useUser";
 
 const AllCartItems = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
+  console.log(cartItems);
   const { email } = useUser();
   const firstName = localStorage.getItem("user").firstName;
 
@@ -22,11 +25,19 @@ const AllCartItems = () => {
   };
 
   return (
-    <div>
-      {cartItems.map((cartItem) => (
-        <TrainingCardv3 training={cartItem} />
+    <div className={styles.allCartItems}>
+      {cartItems.map((item) => (
+        <CartItem
+          key={item.id}
+          image={item.image}
+          name={item.name}
+          price={item.price}
+          id={item.id}
+        />
       ))}
-      <Button onClick={sendToStripeHandler}>Pay with stripe</Button>
+      <div className={styles["button-wrapper"]}>
+        <Button onClick={sendToStripeHandler}>Pay with stripe</Button>
+      </div>
     </div>
   );
 };
