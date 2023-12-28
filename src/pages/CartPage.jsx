@@ -1,11 +1,11 @@
 import React from "react";
-import AllCartItems from "../features/cart/allCartItems";
+import AllCartItems from "../features/cart/AllCartItems";
 import Heading from "../ui/Heading";
 
 const CartPage = () => {
   return (
     <>
-      <Heading>Your cart items</Heading>
+      <Heading>New membership trainings</Heading>
       <AllCartItems />
     </>
   );
