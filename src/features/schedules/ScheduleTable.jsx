@@ -10,24 +10,34 @@ import ScheduleItem from "./ScheduleItem";
 import { useUser } from "../authentication/useUser";
 import { ADMIN } from "../../utils/roles";
 
-export default function ScheduleTable({ schedules, deleteClicked }) {
+export default function ScheduleTable({
+  schedules,
+  deleteClicked,
+  trainingDetails,
+}) {
   //authorization
   const { role } = useUser();
 
+  const tableCellStyles = { fontSize: trainingDetails ? "1.5rem" : "1.2rem" };
+
   return (
     <TableContainer style={{ marginTop: "2rem" }} component={Paper}>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+      <Table
+        sx={{ minWidth: 650 }}
+        size={trainingDetails ? "big" : "small"}
+        aria-label="a dense table"
+      >
         <TableHead>
           <TableRow>
-            <TableCell style={{ fontSize: "1.2rem" }}>Name</TableCell>
-            <TableCell style={{ fontSize: "1.2rem" }} align="right">
+            <TableCell style={tableCellStyles}>Name</TableCell>
+            <TableCell style={tableCellStyles} align="right">
               Day
             </TableCell>
-            <TableCell style={{ fontSize: "1.2rem" }} align="right">
+            <TableCell style={tableCellStyles} align="right">
               Time
             </TableCell>
             {role === ADMIN && (
-              <TableCell style={{ fontSize: "1.2rem" }} align="right">
+              <TableCell style={tableCellStyles} align="right">
                 Actions
               </TableCell>
             )}
@@ -39,6 +49,7 @@ export default function ScheduleTable({ schedules, deleteClicked }) {
               deleteClicked={deleteClicked}
               schedule={schedule}
               key={i}
+              big={trainingDetails ? true : false}
             />
           ))}
         </TableBody>
