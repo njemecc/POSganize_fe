@@ -20,8 +20,6 @@ const TrainingCardv2 = ({ training }) => {
   const addTrainingToCartHandler = (e) => {
     e.stopPropagation();
     dispatch(cartActions.addToCart(training));
-
-    toast.success(`${training.name} succesfully added to cart`);
   };
 
   return (
