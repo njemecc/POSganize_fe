@@ -20,7 +20,6 @@ const AllNews = () => {
       hasMore={hasNextPage}
       height={"100vh"}
       loading={<Spinner />}
-      endMessage="No more news"
     >
       <div className={styles["all-posts"]}>
         {allNews?.map((post, index) => (
