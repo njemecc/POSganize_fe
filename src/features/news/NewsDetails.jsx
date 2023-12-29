@@ -7,9 +7,10 @@ import { useState } from "react";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import { useDeleteNews } from "./useDeleteNews";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useUser } from "../authentication/useUser";
 import { ADMIN } from "../../utils/roles";
+import Heading from "../../ui/Heading";
 
 const NewsDetails = () => {
   const { news, loadingNews } = useGetNewsById();
@@ -17,7 +18,7 @@ const NewsDetails = () => {
   const { deleteNews, isDeleting } = useDeleteNews();
   const { newsId } = useParams();
 
-  const {role} = useUser()
+  const { role } = useUser();
 
   if (loadingNews) return <Spinner />;
 
@@ -28,19 +29,21 @@ const NewsDetails = () => {
       <div className={styles["post-header"]}>
         <h2>{title}</h2>
         <p className={styles["details"]}>
-          <span>{author}</span> - <span>{createdAt}</span>
+          <span>{author}</span> - <span>{createdAt.substring(0, 10)}</span>
         </p>
       </div>
       <div className={styles["post-content"]}>
         <img src={image} alt="Blog Post" />
-        <p className={styles["description"]}>{description}</p>
+        <Heading as="h5" className={styles["description"]}>
+          {description}
+        </Heading>
       </div>
-      {
-        role === ADMIN && <Button onClick={() => setShowDelete(true)} variation="danger">
-        Delete
-      </Button>
-      }
-      
+      {role === ADMIN && (
+        <Button onClick={() => setShowDelete(true)} variation="danger">
+          Delete
+        </Button>
+      )}
+
       {showDelete && (
         <Modal onClose={() => setShowDelete(false)}>
           <ConfirmDelete
