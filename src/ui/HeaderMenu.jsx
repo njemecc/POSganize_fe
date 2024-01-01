@@ -15,7 +15,7 @@ const StyledHeaderMenu = styled.ul`
 `;
 
 const HeaderMenu = () => {
-  const role = useUser();
+  const { role } = useUser();
 
   const [firstName, setFirstName] = useState(
     localStorage.getItem("user").firstName
@@ -47,7 +47,7 @@ const HeaderMenu = () => {
           <Avatar
             style={{ cursor: `${role === USER ? "pointer" : "default"}` }}
             onClick={() =>
-              role === USER ? navigate("/profile") : navigate("/")
+              role === USER ? navigate("/profile") : navigate("/users")
             }
             src={`data:image/png;base64,${image}`}
           />
