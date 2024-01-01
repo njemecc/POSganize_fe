@@ -8,28 +8,45 @@ import Spinner from "../../ui/Spinner";
 import { ADMIN, USER } from "../../utils/roles";
 import { useState, useEffect } from "react";
 import { useGetUser } from "./useGetUser";
+import { exactProp } from "@mui/utils";
 
 const UserDetails = () => {
   const { role, isLoading } = useUser();
   const { user, loadingUser } = useGetUser();
 
-  const [image, setImage] = useState(localStorage.getItem("user").image);
+  const [image, setImage] = useState();
+  const [imageSrc, setImageSrc] = useState();
 
   useEffect(() => {
-    if (role === ADMIN && !isLoading && !loadingUser) {
-      user.image
-        ? setImage(user.image)
-        : setImage(
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/800px-User-avatar.svg.png"
-          );
-    } else if (role === USER && !image && !isLoading && !loadingUser) {
-      setImage(
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/800px-User-avatar.svg.png"
-      );
-    } else {
-      setImage(JSON.parse(localStorage.getItem("user")).image);
+    if (role === USER && !isLoading) {
+      if (JSON.parse(localStorage.getItem("user")).image) {
+        setImage(JSON.parse(localStorage.getItem("user")).image);
+        setImageSrc(`data:image/png;base64,${image}`);
+      } else {
+        setImage(
+          "https://p7.hiclipart.com/preview/954/328/914/computer-icons-user-profile-avatar.jpg"
+        );
+        setImageSrc(image);
+      }
+    } else if (role == ADMIN && !isLoading && !loadingUser) {
+      if (user.image) {
+        setImage(user.image);
+        setImageSrc(`data:image/png;base64,${image}`);
+      } else {
+        setImage(
+          "https://p7.hiclipart.com/preview/954/328/914/computer-icons-user-profile-avatar.jpg"
+        );
+        setImageSrc(image);
+      }
     }
-  }, [localStorage.getItem("user"), role, loadingUser, isLoading]);
+  }, [
+    localStorage.getItem("user"),
+    role,
+    loadingUser,
+    isLoading,
+    image,
+    imageSrc,
+  ]);
 
   (isLoading || loadingUser) && <Spinner />;
 
@@ -50,7 +67,7 @@ const UserDetails = () => {
             borderRadius: "15px",
             objectFit: "contain",
           }}
-          src={!user?.image ? image : `data:image/png;base64,${image}`}
+          src={imageSrc}
         ></img>
       </div>
       <UserDetailsHeaderv2 />
