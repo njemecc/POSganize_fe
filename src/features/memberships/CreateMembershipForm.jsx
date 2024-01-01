@@ -42,8 +42,6 @@ const CreateMembershipForm = ({ onClose }) => {
 
     createMembership(membershipToSend);
     onClose();
-
-    // console.log(membershipToSend);
   };
 
   //styles
