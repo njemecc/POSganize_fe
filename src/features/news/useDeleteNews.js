@@ -17,7 +17,6 @@ export function useDeleteNews() {
     },
     onError: (err) => {
       toast.error(err.message);
-      console.log("Error is : ", err);
     },
   });
 

@@ -8,8 +8,6 @@ import { useGetUser } from "./useGetUser";
 const UserDetailsHeader = () => {
   const { user, loadingUser } = useGetUser();
 
-  console.log(user);
-
   if (loadingUser) return <Spinner />;
 
   return (

@@ -6,10 +6,7 @@ import { createNews as createNewsApi } from "../../services/apiNews";
 export function useCreateNews() {
   const queryClient = useQueryClient();
 
-  const {
-    mutate: createNews,
-    isLoading:isCreating,
-  } = useMutation({
+  const { mutate: createNews, isLoading: isCreating } = useMutation({
     mutationFn: createNewsApi,
     onSuccess: () => {
       toast.success("News News successfully created");
@@ -19,7 +16,6 @@ export function useCreateNews() {
     },
     onError: (err) => {
       toast.error(err.message);
-      console.log("error is", err);
     },
   });
 

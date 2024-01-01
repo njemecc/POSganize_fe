@@ -16,7 +16,6 @@ export function useCreateTraining() {
     },
     onError: (err) => {
       toast.error(err.message);
-      console.log("error is", err);
     },
   });
   return { createTraining, isCreating };

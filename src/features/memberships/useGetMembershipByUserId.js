@@ -12,8 +12,6 @@ export function useGetMembershipByUserId() {
 
   const userId = paramsUserId ? paramsUserId : profileUserId;
 
-  console.log("userId", userId);
-
   //PAGINATION
 
   const pageNumber = !searchParams.get("page")

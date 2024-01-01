@@ -17,7 +17,6 @@ export function useCreateMembership() {
     },
     onError: (err) => {
       toast.error(err.message);
-      console.log("error is", err);
     },
   });
 

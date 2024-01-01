@@ -6,9 +6,7 @@ export function useGetNews() {
     queryKey: ["news"],
     queryFn: getAllNews,
     getNextPageParam: (lastPage) => {
-      console.log(lastPage);
       if (lastPage.hasNext === false) {
-        console.log("E1");
         return undefined;
       }
 
