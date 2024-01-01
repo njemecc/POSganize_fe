@@ -17,7 +17,6 @@ export function useDeleteSchedule() {
       },
       onError: (err) => {
         toast.error(err.message);
-        console.log("Error is  : ", err);
       },
     }
   );

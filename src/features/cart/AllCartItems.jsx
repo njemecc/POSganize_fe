@@ -10,11 +10,8 @@ import { stripeCheckout } from "../../services/apiStripe";
 
 import { useUser } from "../authentication/useUser";
 
-const AllCartItems = () => {
-  const cartItems = useSelector((state) => state.cart.cartItems);
-  console.log(cartItems);
-  const { email } = useUser();
-  const firstName = localStorage.getItem("user").firstName;
+const AllCartItems = ({ cartItems }) => {
+  const { email, firstName } = useUser();
 
   const sendToStripeHandler = () => {
     stripeCheckout({

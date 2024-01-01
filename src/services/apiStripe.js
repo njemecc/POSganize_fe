@@ -1,4 +1,5 @@
 import { toast } from "react-hot-toast";
+import { authHeader } from "./apiAuth";
 
 import { backendURL } from "./backend";
 
@@ -21,7 +22,7 @@ export const stripeCheckout = async (data) => {
   try {
     const response = await fetch(`${backendURL}/api/v1/stripe/checkout`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", ...authHeader() },
       body: JSON.stringify({
         items: data.cartItems,
         customerName: data.firstName,

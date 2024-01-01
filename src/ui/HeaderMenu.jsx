@@ -1,14 +1,13 @@
-import { HiOutlineUser } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Logout from "../features/authentication/Logout";
-import ButtonIcon from "./ButtonIcon";
-import DarkModeToggle from "./DarkModeToggle";
+import Logout from "../features/authentication/logout";
 
 import { useState, useEffect } from "react";
-import Heading from "./Heading";
+
 import { Avatar } from "@mui/material";
 import { stringAvatar } from "../utils/helpers";
+import { useUser } from "../features/authentication/useUser";
+import { ADMIN, USER } from "../utils/roles";
 
 const StyledHeaderMenu = styled.ul`
   display: flex;
@@ -16,6 +15,8 @@ const StyledHeaderMenu = styled.ul`
 `;
 
 const HeaderMenu = () => {
+  const { role } = useUser();
+
   const [firstName, setFirstName] = useState(
     localStorage.getItem("user").firstName
   );
@@ -44,14 +45,16 @@ const HeaderMenu = () => {
       >
         {image ? (
           <Avatar
-            style={{ cursor: "pointer" }}
-            onClick={() => navigate("/profile")}
+            style={{ cursor: `${role === USER ? "pointer" : "default"}` }}
+            onClick={() =>
+              role === USER ? navigate("/profile") : navigate("/users")
+            }
             src={`data:image/png;base64,${image}`}
           />
         ) : (
           <Avatar
-            style={{ cursor: "pointer" }}
-            onClick={() => navigate("/profile")}
+            style={{ cursor: `${role === USER ? "pointer" : "default"}` }}
+            onClick={() => (role === USER ? navigate("/profile") : "")}
             {...stringAvatar(`${firstName} ${lastName}`)}
           />
         )}

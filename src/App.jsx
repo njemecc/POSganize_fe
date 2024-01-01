@@ -9,7 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import News from "./pages/News";
 import Rules from "./pages/Rules";
 import Users from "./pages/Users";
-import UserDetails from "./pages/UserDetails";
+import UserDetailsPage from "./pages/UserDetailsPage";
 import AppLayout from "./ui/AppLayout";
 import Login from "./pages/Login";
 import Trainings from "./pages/Trainings";
@@ -82,11 +82,11 @@ function App() {
                 path="users/:userId"
                 element={
                   <AdminProtectedRoute>
-                    <UserDetails />
+                    <UserDetailsPage />
                   </AdminProtectedRoute>
                 }
               />
-              <Route path="profile" element={<UserDetails />} />
+              <Route path="profile" element={<UserDetailsPage />} />
 
               <Route path="news" element={<News />} />
               <Route path="news/:newsId" element={<NewsDetailsPage />} />
@@ -102,7 +102,7 @@ function App() {
               <Route path="rules" element={<Rules />} />
               <Route path="cart" element={<CartPage />} />
 
-              <Route path="success" element={<UserDetails />} />
+              <Route path="success" element={<UserDetailsPage />} />
               <Route path="failure" element={<ErrorPage />} />
 
               <Route path="trainings" element={<Trainings />} />

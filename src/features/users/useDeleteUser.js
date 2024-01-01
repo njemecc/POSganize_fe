@@ -15,7 +15,6 @@ export function useDeleteUser() {
     },
     onError: (err) => {
       toast.error(err.message);
-      console.log("Error is : ", err);
     },
   });
 

@@ -6,10 +6,7 @@ import { createRule as createRuleApi } from "../../services/apiRules";
 export function useCreateRule() {
   const queryClient = useQueryClient();
 
-  const {
-    mutate: createRule,
-    isLoading:isCreating,
-  } = useMutation({
+  const { mutate: createRule, isLoading: isCreating } = useMutation({
     mutationFn: createRuleApi,
     onSuccess: () => {
       toast.success("News Rule successfully created");
@@ -19,7 +16,6 @@ export function useCreateRule() {
     },
     onError: (err) => {
       toast.error(err.message);
-      console.log("error is", err);
     },
   });
 

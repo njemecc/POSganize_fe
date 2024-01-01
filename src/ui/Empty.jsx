@@ -1,5 +1,7 @@
+import Heading from "./Heading";
+
 function Empty({ resource }) {
-  return <p>No {resource} could be found.</p>;
+  return <Heading as="h2">No {resource} could be found.</Heading>;
 }
 
 export default Empty;

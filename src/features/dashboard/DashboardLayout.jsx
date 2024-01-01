@@ -32,8 +32,6 @@ const DashboardLayout = () => {
     }
   );
 
-  console.log("rev", revenueData);
-
   const membersMonthData = statistics.revenue_and_members.map(
     ({ month, price, year, members }) => {
       return { members, date: `${month} ${year}` };

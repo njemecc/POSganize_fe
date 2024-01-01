@@ -1,7 +1,11 @@
 import { backendURL } from "./backend";
+import { authHeader } from "./apiAuth";
 
 export async function getAllRules() {
-  const response = await fetch(`${backendURL}/api/v1/clubrules/all`);
+  const response = await fetch(`${backendURL}/api/v1/clubrules/all`, {
+    method: "GET",
+    headers: authHeader(),
+  });
 
   const data = await response.json();
 
@@ -9,10 +13,9 @@ export async function getAllRules() {
 }
 
 export async function createRule(rule) {
- 
   const response = await fetch(`${backendURL}/api/v1/clubrules/create`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...authHeader() },
     body: JSON.stringify(rule),
   });
 
@@ -20,10 +23,10 @@ export async function createRule(rule) {
   return data;
 }
 
-
 export async function deleteRule(id) {
   const response = await fetch(`${backendURL}/api/v1/clubrules/delete/${id}`, {
     method: "DELETE",
+    headers: authHeader(),
   });
 
   const data = await response.json();

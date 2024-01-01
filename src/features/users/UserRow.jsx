@@ -60,7 +60,6 @@ const UserRow = ({ user }) => {
             onClick={() => {
               setShowEdit(true);
               setWhatModal(user.id);
-              console.log(user);
             }}
           >
             {" "}

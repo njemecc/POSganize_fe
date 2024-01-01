@@ -6,6 +6,7 @@ import { useUser } from "../features/authentication/useUser";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import Spinner from "../ui/Spinner";
+import { useEffect } from "react";
 const LoginLayout = styled.main`
   min-height: 100vh;
   display: grid;
@@ -20,10 +21,12 @@ const Login = () => {
   const { isAuthenticated, isLoading } = useUser();
   const navigate = useNavigate();
 
-  if (isAuthenticated && !isLoading) {
-    toast.success("Alredy signed in");
-    navigate("/trainings");
-  }
+  useEffect(() => {
+    if (isAuthenticated && !isLoading) {
+      toast.success("Alredy signed in");
+      navigate("/trainings");
+    }
+  }, [isAuthenticated, isLoading]);
 
   isLoading && <Spinner />;
 

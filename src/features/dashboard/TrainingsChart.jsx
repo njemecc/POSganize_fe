@@ -89,8 +89,6 @@ function TrainingChart({ membersPerTraining }) {
     return { ...training, color: LightColors[i].color };
   });
 
-  console.log(startData);
-
   return (
     <ChartBox>
       {/* <Heading type="h2">Trainings summary</Heading> */}

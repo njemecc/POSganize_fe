@@ -19,13 +19,13 @@ const MembershipRow = ({ membership }) => {
         {...trainings}
       </TableCell>
       <TableCell sx={{ fontSize: 13.5 }} align="left">
-        {membership.startDate}
+        {membership.startDate.substring(0, 10)}
       </TableCell>
       <TableCell sx={{ fontSize: 13.5 }} align="left">
-        {membership.expireDate}
+        {membership.expireDate.substring(0, 10)}
       </TableCell>
       <TableCell sx={{ fontSize: 13.5 }} align="left">
-        {membership.price}
+        $ {membership.price}
       </TableCell>
       <TableCell sx={{ fontSize: 13.5 }} align="left">
         {" "}

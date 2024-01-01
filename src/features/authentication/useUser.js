@@ -16,6 +16,7 @@ export function useUser() {
   const role = user?.role;
   const userId = user?.userId;
   const email = user?.email;
+  const firstName = user?.firstName;
 
-  return { isLoading, isAuthenticated, role, userId, email };
+  return { isLoading, isAuthenticated, role, userId, email, firstName };
 }

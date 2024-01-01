@@ -1,10 +1,10 @@
 import { backendURL } from "./backend";
+import { authHeader } from "./apiAuth";
 
 export async function createNews(news) {
-  console.log(news);
   const response = await fetch(`${backendURL}/api/v1/clubnews/create`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...authHeader() },
     body: JSON.stringify(news),
   });
 
@@ -13,16 +13,22 @@ export async function createNews(news) {
 }
 
 export async function getAllNews({ pageParam = 0 }) {
-  console.log(pageParam);
   const response = await fetch(
-    `${backendURL}/api/v1/clubnews/pageable?pageNumber=${pageParam}`
+    `${backendURL}/api/v1/clubnews/pageable?pageNumber=${pageParam}`,
+    {
+      method: "GET",
+      headers: authHeader(),
+    }
   );
   const data = await response.json();
   return data;
 }
 
 export async function getNewsById(id) {
-  const response = await fetch(`${backendURL}/api/v1/clubnews/get/${id}`);
+  const response = await fetch(`${backendURL}/api/v1/clubnews/get/${id}`, {
+    method: "GET",
+    headers: authHeader(),
+  });
 
   const data = await response.json();
 
@@ -32,6 +38,7 @@ export async function getNewsById(id) {
 export async function deleteNews(id) {
   const response = await fetch(`${backendURL}/api/v1/clubnews/delete/${id}`, {
     method: "DELETE",
+    headers: authHeader(),
   });
 
   const data = await response.json();

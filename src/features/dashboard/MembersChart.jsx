@@ -26,7 +26,6 @@ const ChartBox = styled.div`
 `;
 
 const MembersChart = ({ membersMonthData }) => {
-  console.log(membersMonthData);
   return (
     <ChartBox>
       <ResponsiveContainer width="100%" height="100%">

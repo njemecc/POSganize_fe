@@ -15,7 +15,6 @@ export function useDeleteRule() {
     },
     onError: (err) => {
       toast.error(err.message);
-      console.log("Error is : ", err);
     },
   });
 
