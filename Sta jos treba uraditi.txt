@@ -1,9 +1,6 @@
-1)Autorizacija na backend-u i frontendu
-2)Restyle aplikacije (
-2.1 - promeniti logo
-2.2 - pronaci odgovarajuci font
-)
+1)Autorizacija na backend-u 
 3) Popuniti bazu podataka
 4)Dokumentacija
-5)obrisati sve console.log-ove
 6) Deployment
+7)kod create user dodati sliku
+8)cascade restrict
