@@ -1,4 +1,5 @@
 import { backendURL } from "./backend";
+import { authHeader } from "./apiAuth";
 
 export async function getMembershipByUserId({
   userId,
@@ -7,7 +8,11 @@ export async function getMembershipByUserId({
   pageSize,
 }) {
   const response = await fetch(
-    `${backendURL}/api/v1/membership/user/${userId}?sortOrder=${sortBy}&pageNumber=${pageNumber}&pageSize=${pageSize}`
+    `${backendURL}/api/v1/membership/user/${userId}?sortOrder=${sortBy}&pageNumber=${pageNumber}&pageSize=${pageSize}`,
+    {
+      method: "GET",
+      headers: authHeader(),
+    }
   );
   const data = await response.json();
 
@@ -17,7 +22,7 @@ export async function getMembershipByUserId({
 export async function createMembership(membership) {
   const response = await fetch(`${backendURL}/api/v1/membership/create`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...authHeader() },
     body: JSON.stringify(membership),
   });
 

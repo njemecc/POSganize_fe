@@ -1,16 +1,23 @@
 import { backendURL } from "./backend";
+import { authHeader } from "./apiAuth";
 
 export async function getAllUsers({ pageNumber, pageSize, status }) {
   const response = await fetch(
-    `${backendURL}/api/v1/users/all?pageNumber=${pageNumber}&pageSize=${pageSize}&status=${status}`
+    `${backendURL}/api/v1/users/all?pageNumber=${pageNumber}&pageSize=${pageSize}&status=${status}`,
+    {
+      method: "GET",
+      headers: authHeader(),
+    }
   );
   const data = await response.json();
-  // console.log("all users", data);
   return data;
 }
 
 export async function getUserById(id) {
-  const response = await fetch(`${backendURL}/api/v1/users/get/${id}`);
+  const response = await fetch(`${backendURL}/api/v1/users/get/${id}`, {
+    method: "GET",
+    headers: authHeader(),
+  });
 
   const data = await response.json();
 
@@ -20,6 +27,7 @@ export async function getUserById(id) {
 export async function deleteUser(id) {
   const response = await fetch(`${backendURL}/api/v1/users/delete/${id}`, {
     method: "DELETE",
+    headers: authHeader(),
   });
 
   const data = await response.json();
@@ -30,13 +38,11 @@ export async function deleteUser(id) {
 export async function createUser(user) {
   const response = await fetch(`${backendURL}/api/v1/auth/register`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...authHeader() },
     body: JSON.stringify(user),
   });
 
   const data = await response.json();
-
-  console.log("data je", data);
 
   return data;
 }
@@ -46,7 +52,7 @@ export async function updateUser(updatedUser) {
     `${backendURL}/api/v1/users/update/${updatedUser.userId}`,
     {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", ...authHeader() },
       body: JSON.stringify(updatedUser.data),
     }
   );
@@ -58,7 +64,11 @@ export async function updateUser(updatedUser) {
 
 export async function isUserActive(userId) {
   const response = await fetch(
-    `${backendURL}/api/v1/membership/active/${userId}`
+    `${backendURL}/api/v1/membership/active/${userId}`,
+    {
+      method: "GET",
+      headers: authHeader(),
+    }
   );
 
   if (!response.ok) {

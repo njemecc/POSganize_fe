@@ -1,8 +1,10 @@
+import { authHeader } from "./apiAuth";
 import { backendURL } from "./backend";
 
 export async function deleteSchedule(id) {
   const response = await fetch(`${backendURL}/api/v1/schedule/delete/${id}`, {
     method: "DELETE",
+    headers: authHeader(),
   });
 
   const data = await response.json();
@@ -15,7 +17,7 @@ export async function createScheduleByTrainingId(schedule) {
     `${backendURL}/api/v1/schedule/create/${schedule.trainingId}`,
     {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", ...authHeader() },
       body: JSON.stringify(schedule.data),
     }
   );
