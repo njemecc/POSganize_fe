@@ -37,7 +37,6 @@ export const stripeCheckout = async (data) => {
     const redirectURL = await response.text();
     window.location.href = redirectURL;
   } catch (error) {
-    console.error("Error during checkout:", error);
     toast.error("Error during checkout. Please try again.");
   }
 };
