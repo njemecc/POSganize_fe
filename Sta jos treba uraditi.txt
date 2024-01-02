@@ -1,6 +1,0 @@
-1)Autorizacija na backend-u 
-3) Popuniti bazu podataka
-4)Dokumentacija
-6) Deployment
-7)kod create user dodati sliku
-8)cascade restrict
