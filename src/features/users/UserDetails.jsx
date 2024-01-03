@@ -26,7 +26,7 @@ const UserDetails = () => {
         setImage(
           "https://p7.hiclipart.com/preview/954/328/914/computer-icons-user-profile-avatar.jpg"
         );
-        setImageSrc(image);
+        setImageSrc("../../public/images/user-avatar.png");
       }
     } else if (role == ADMIN && !isLoading && !loadingUser) {
       if (user.image) {
@@ -36,7 +36,7 @@ const UserDetails = () => {
         setImage(
           "https://p7.hiclipart.com/preview/954/328/914/computer-icons-user-profile-avatar.jpg"
         );
-        setImageSrc(image);
+        setImageSrc("../../public/images/user-avatar.png");
       }
     }
   }, [
