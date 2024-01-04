@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Logout from "../features/authentication/logout";
+import Logout from "../features/authentication/Logout";
 
 import { useState, useEffect } from "react";
 
