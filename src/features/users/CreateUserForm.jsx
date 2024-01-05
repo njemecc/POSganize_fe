@@ -40,15 +40,25 @@ const CreateUserForm = ({ onClose, edit = false, user }) => {
   const { updateUser, isUpdating } = useUpdateUser();
 
   const onSubmit = async (data) => {
-    const image = await readFileAsBlob(selectedFile);
+    const image = selectedFile ? await readFileAsBlob(selectedFile) : null;
+
     if (edit && user) {
       const updatedUser = image
-        ? { data: { ...data, image: Array.from(image) }, userId: user.id }
+        ? {
+            data: {
+              ...data,
+              image: selectedFile ? Array.from(image) : user?.image,
+            },
+            userId: user.id,
+          }
         : { data, userId: user.id };
 
       updateUser(updatedUser);
     } else {
-      createUser({ ...data, image: Array.from(image) });
+      createUser({
+        ...data,
+        image: selectedFile ? Array.from(image) : null,
+      });
     }
 
     onClose();

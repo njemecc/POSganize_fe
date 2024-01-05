@@ -11,7 +11,7 @@ import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import ScheduleTable from "../schedules/ScheduleTable";
 import CreateScheduleForm from "../schedules/CreateScheduleForm";
-
+import CreateEditTrainingForm from "./CreateEditTrainingForm";
 //icons
 import { HiPencil, HiTrash } from "react-icons/hi2";
 import { useDeleteSchedule } from "../schedules/useDeleteSchedule";

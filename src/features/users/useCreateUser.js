@@ -3,9 +3,12 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 import { createUser as createUserApi } from "../../services/apiUsers";
+import { ADMIN } from "../../utils/roles";
+import { useUser } from "../authentication/useUser";
 
 export function useCreateUser() {
   const navigate = useNavigate();
+  const { role } = useUser();
   const queryClient = useQueryClient();
   const {
     mutate: createUser,
@@ -15,7 +18,11 @@ export function useCreateUser() {
     mutationFn: createUserApi,
     onSuccess: () => {
       toast.success("New user successfully created");
-      navigate("/login");
+
+      if (role !== ADMIN) {
+        navigate("/login");
+      }
+
       queryClient.invalidateQueries({
         queryKey: ["users"],
       });
