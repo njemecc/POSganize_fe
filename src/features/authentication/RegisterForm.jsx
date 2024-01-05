@@ -101,6 +101,7 @@ const RegisterForm = () => {
         />
         <TextField
           label="Phone Number"
+          type="number"
           variant="outlined"
           name="phoneNumber"
           required
