@@ -39,7 +39,7 @@ const HeaderInfo = () => {
         >
           <Heading as="h3">
             Try <span style={{ color: "var(--color-brand-600)" }}>Stripe</span>{" "}
-            payment with <b>USER </b>role credentials ⏩
+            payment with <b>USER </b>role credentials 👉
           </Heading>
           <Heading as="h5">Username: user@email.com</Heading>
           <Heading as="h5">Password: user1234</Heading>
@@ -55,8 +55,10 @@ const HeaderInfo = () => {
           }}
         >
           <Heading as="h3">
-            Try data <span style={{ color: "red" }}>mutations </span>
-            with <b>ADMIN </b>role credentials ⏩
+            Try{" "}
+            <span style={{ color: "var(--color-brand-600)" }}>Dashboard</span> &
+            data <span style={{ color: "red" }}>mutations </span>
+            with <b>ADMIN </b>role credentials 👉
           </Heading>
           <Heading as="h5">Username: admin@email.com</Heading>
           <Heading as="h5">Password: admin1234</Heading>
