@@ -8,10 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Avatar } from "@mui/material";
 import { readFileAsBlob } from "../../utils/helpers";
+import SpinnerMini from "../../ui/SpinnerMini";
 
 const RegisterForm = () => {
-  const { createUser, isCreating } = useCreateUser();
-  const navigate = useNavigate();
+  const { createUser, status } = useCreateUser();
 
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -24,7 +24,6 @@ const RegisterForm = () => {
     const image = await readFileAsBlob(selectedFile);
 
     createUser({ ...data, image: Array.from(image) });
-    navigate("/login");
   };
 
   //styles
@@ -145,9 +144,9 @@ const RegisterForm = () => {
           type="submit"
           variant="contained"
           style={{ backgroundColor: "#4f46e5", color: "white" }}
-          disabled={isCreating}
+          disabled={status === "pending"}
         >
-          Register
+          {status === "pending" ? <SpinnerMini /> : "Sign Up"}
         </Button>
         <p className="signup-prompt">
           Alredy have an account? <Link to="/login">Sign in</Link>
