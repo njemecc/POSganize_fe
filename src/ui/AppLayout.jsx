@@ -35,6 +35,9 @@ const Container = styled.div`
 const AppLayout = () => {
   return (
     <>
+      {
+        //info bar
+      }
       <HeaderInfo />
 
       <StyledAppLayout>
