@@ -5,11 +5,12 @@ import SpinnerMini from "../../ui/SpinnerMini";
 import { useLogin } from "./useLogin";
 import { TextField } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 function LoginForm() {
   const [email, setEmail] = useState("admin@email.com");
   const [password, setPassword] = useState("admin1234");
 
-  const { login, isLoading } = useLogin();
+  const { login, status } = useLogin();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -71,9 +72,9 @@ function LoginForm() {
             type="submit"
             className="custom-button"
             size="large"
-            disabled={isLoading}
+            disabled={status === "pending"}
           >
-            {!isLoading ? "Log in" : <SpinnerMini />}{" "}
+            {status === "pending" ? <SpinnerMini /> : "Log in"}
           </Button>
         </div>
         <p className="signup-prompt">
