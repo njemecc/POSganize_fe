@@ -13,6 +13,7 @@ import { useUser } from "../authentication/useUser";
 
 const TrainingCardv2 = ({ training }) => {
   const { id, name, image, price, description } = training;
+
   const { role } = useUser();
   const navigate = useNavigate();
   const dispatch = useDispatch();

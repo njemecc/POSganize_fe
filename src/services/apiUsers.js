@@ -1,6 +1,6 @@
 import { backendURL } from "./backend";
 import { authHeader } from "./apiAuth";
-
+import { toast } from "react-hot-toast";
 export async function getAllUsers({ pageNumber, pageSize, status }) {
   const response = await fetch(
     `${backendURL}/api/v1/users/all?pageNumber=${pageNumber}&pageSize=${pageSize}&status=${status}`,
@@ -43,7 +43,8 @@ export async function createUser(user) {
   });
 
   if (!response.ok) {
-    toast.error("An error occurred while processing registration");
+    toast.error("An error occurred while creating a new user");
+    return null;
   }
 
   const data = await response.json();
