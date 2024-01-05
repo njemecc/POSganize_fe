@@ -21,9 +21,9 @@ const RegisterForm = () => {
   };
 
   const onSubmit = async (data) => {
-    const image = await readFileAsBlob(selectedFile);
+    const image = selectedFile ? await readFileAsBlob(selectedFile) : null;
 
-    createUser({ ...data, image: Array.from(image) });
+    createUser({ ...data, image: selectedFile ? Array.from(image) : null });
   };
 
   //styles
