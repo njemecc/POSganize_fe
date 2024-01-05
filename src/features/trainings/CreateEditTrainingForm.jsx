@@ -17,7 +17,6 @@ import ScheduleTable from "../schedules/ScheduleTable";
 
 //toast
 import { toast } from "react-hot-toast";
-import { useQueryClient } from "@tanstack/react-query";
 
 const CreateEditTrainingForm = ({ onClose, edit = false, training }) => {
   const { createTraining, isCreating } = useCreateTraining();
