@@ -1,4 +1,5 @@
 import { backendURL } from "./backend";
+
 export async function login({ email, password }) {
   const response = await fetch(`${backendURL}/api/v1/auth/login`, {
     method: "POST",

@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 //components
 import Sidebar from "./Sidebar";
 import Header from "./Header";
+import HeaderInfo from "./HeaderInfo";
 
 const StyledAppLayout = styled.div`
   display: grid;
@@ -33,15 +34,22 @@ const Container = styled.div`
 
 const AppLayout = () => {
   return (
-    <StyledAppLayout>
-      <Header />
-      <Sidebar />
-      <Main>
-        <Container>
-          <Outlet />
-        </Container>
-      </Main>
-    </StyledAppLayout>
+    <>
+      {
+        //info bar
+      }
+      <HeaderInfo />
+
+      <StyledAppLayout>
+        <Header />
+        <Sidebar />
+        <Main>
+          <Container>
+            <Outlet />
+          </Container>
+        </Main>
+      </StyledAppLayout>
+    </>
   );
 };
 

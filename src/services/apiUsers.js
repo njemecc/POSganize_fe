@@ -42,6 +42,10 @@ export async function createUser(user) {
     body: JSON.stringify(user),
   });
 
+  if (!response.ok) {
+    toast.error("An error occurred while processing registration");
+  }
+
   const data = await response.json();
 
   return data;
