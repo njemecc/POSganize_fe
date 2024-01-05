@@ -9,23 +9,15 @@ import { useLogin } from "./useLogin";
 import { TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 function LoginForm() {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("admin@email.com");
+  const [password, setPassword] = useState("admin1234");
 
   const { login, isLoading } = useLogin();
 
   function handleSubmit(e) {
     e.preventDefault();
     if (!email || !password) return;
-    login(
-      { email, password }
-      // {
-      //   onSettled: () => {
-      //     setEmail("");
-      //     setPassword("");
-      //   },
-      // }
-    );
+    login({ email, password });
   }
 
   //styles
@@ -48,6 +40,7 @@ function LoginForm() {
             id="outlined-basic"
             label="Email"
             variant="outlined"
+            value={email}
             InputProps={{
               style: inputStyles,
             }}
@@ -65,6 +58,7 @@ function LoginForm() {
             id="outlined-basic"
             label="Password"
             variant="outlined"
+            value={password}
             InputProps={{
               style: inputStyles,
             }}
@@ -80,7 +74,7 @@ function LoginForm() {
             type="submit"
             className="custom-button"
             size="large"
-            // disabled={isLoading}
+            disabled={isLoading}
           >
             {!isLoading ? "Log in" : <SpinnerMini />}{" "}
           </Button>
