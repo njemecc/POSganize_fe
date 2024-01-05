@@ -24,7 +24,7 @@ const ScheduleItem = ({ schedule, deleteClicked, big }) => {
         {schedule.scheduleDay}
       </TableCell>
       <TableCell style={tableCellStyles} align="right">
-        {schedule.scheduleTime}
+        {schedule.scheduleTime}h
       </TableCell>
       {role === ADMIN && (
         <TableCell style={tableCellStyles} align="right">

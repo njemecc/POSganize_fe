@@ -29,7 +29,6 @@
   background-position: center;
   object-fit: contain;
   background-repeat: no-repeat;
-  /* max-width: 105ch; */
   color: var(--clr-white);
   font-family: "Roboto", sans-serif;
   border-radius: var(--radius-1);
