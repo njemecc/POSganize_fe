@@ -19,7 +19,7 @@ Note: The admin account is pre-defined and represents the academy owner who purc
 ### USER
 - Registration and login features with role-based authentication and UI rendering.
 - Access to view training sessions and details without CRUD capabilities.
-- Ability to add desired training sessions to the cart and proceed to checkout with: [![Stripe Badge](https://img.shields.io/badge/Stripe-626CD9?style=for-the-badge&logo=Stripe&logoColor=white)](https://stripe.com/)
+- Ability to add desired training sessions to the cart and proceed to checkout with:  [![Stripe Badge](https://img.shields.io/badge/Stripe-626CD9?style=for-the-badge&logo=Stripe&logoColor=white)](https://stripe.com/)
 - After successful payment, the user is redirected to the profile page showing account information and newly acquired memberships.
 - Access to view their own 'Profile Page' displaying personal account details.
 - Ability to review their own 'Membership History' without access to others' membership records.
