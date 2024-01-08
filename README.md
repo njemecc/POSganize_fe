@@ -92,6 +92,24 @@ Start the server
 
 [![Posganize.be - Backend](https://img.shields.io/badge/Posganize.be-28a745?style=for-the-badge&labelColor=black&logoColor=white)](https://github.com/Dz0nZ1/Posganize.be)
 [![GitHub - dzonzi](https://img.shields.io/badge/GitHub-dzonzi-black?style=for-the-badge&logo=github)](https://github.com/Dz0nZ1) 
+
+
+## Screenshots
+
+### Users
+![App Screenshot](https://gcdnb.pbrd.co/images/wXQU7MeMkd1N.png?o=1)
+
+### Dashboard
+![Dashboard](https://gcdnb.pbrd.co/images/p1vi4E2O0dZY.png?o=1)
+
+### User Details
+![User Details](https://gcdnb.pbrd.co/images/cH25J7sJPu9m.png?o=1)
+
+### Trainings
+![User Details](https://gcdnb.pbrd.co/images/LAok8tCSJdQR.png?o=1)
+
+
+
 ## Future plan
 
 - mobile responsive design
