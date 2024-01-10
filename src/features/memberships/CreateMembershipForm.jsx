@@ -21,6 +21,7 @@ import { useTrainings } from "../trainings/useTrainings";
 import Spinner from "../../ui/Spinner";
 import { useParams } from "react-router-dom";
 import { useCreateMembership } from "./useCreateMembership";
+import { toast } from "react-hot-toast";
 const CreateMembershipForm = ({ onClose }) => {
   const [startDate, setStartDate] = useState();
   const [expireDate, setExpireDate] = useState();
@@ -33,6 +34,11 @@ const CreateMembershipForm = ({ onClose }) => {
   if (loadingTrainings) return <Spinner />;
 
   const onSubmit = () => {
+    if (!startDate || !expireDate || trainingsToSend.length === 0) {
+      toast.error("All fields are required");
+      return;
+    }
+
     const membershipToSend = {
       startDate,
       expireDate,

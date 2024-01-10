@@ -29,6 +29,10 @@ const variations = {
       background-color: var(--color-brand-700);
     }
   `,
+  disabled: css`
+    color: #999999;
+    background-color: #cccccc;
+  `,
   secondary: css`
     color: var(--color-grey-600);
     background: var(--color-grey-0);
