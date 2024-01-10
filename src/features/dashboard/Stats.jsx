@@ -25,7 +25,7 @@ function Stats({
       <Stat
         icon={<HiOutlineBanknotes />}
         title="Profit"
-        value={totalRevenue}
+        value={`$${totalRevenue}`}
         color="green"
       />
       <Stat
