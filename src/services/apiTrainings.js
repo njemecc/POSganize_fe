@@ -58,3 +58,16 @@ export async function getTraining(id) {
 
   return data;
 }
+
+export async function checkDuplicateTraining(trainingId) {
+  const response = await fetch(
+    `${backendURL}/api/v1/training/duplicate/${trainingId}`,
+    {
+      method: "GET",
+      headers: authHeader(),
+    }
+  );
+
+  const data = await response.json();
+  return data;
+}
