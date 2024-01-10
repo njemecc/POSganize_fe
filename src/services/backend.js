@@ -1,1 +1,1 @@
-export const backendURL = "https://posganize.onrender.com";
+export const backendURL = "https://posganize-uq3t.onrender.com";
