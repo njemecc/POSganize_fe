@@ -26,22 +26,22 @@ const DashboardLayout = () => {
 
   if (isLoading1 || isLoading2) return <Spinner />;
 
-  const revenueData = statistics.revenue_and_members.map(
+  const revenueData = statistics?.revenue_and_members.map(
     ({ month, price, year, members }) => {
       return { price, date: `${month} ${year}` };
     }
   );
 
-  const membersMonthData = statistics.revenue_and_members.map(
+  const membersMonthData = statistics?.revenue_and_members.map(
     ({ month, price, year, members }) => {
       return { members, date: `${month} ${year}` };
     }
   );
 
-  const totalRevenue = statistics.RevenueAndMembersByMonth.totalRevenue;
-  const totalMembers = statistics.RevenueAndMembersByMonth.totalMembers;
-  const mostPopularTraining = statistics.MostPopularTraining;
-  const numberOfTrainings = statistics.NumberOfActiveTrainings;
+  const totalRevenue = statistics?.RevenueAndMembersByMonth.totalRevenue;
+  const totalMembers = statistics?.RevenueAndMembersByMonth.totalMembers;
+  const mostPopularTraining = statistics?.MostPopularTraining;
+  const numberOfTrainings = statistics?.NumberOfActiveTrainings;
 
   return (
     <StyledDashboardLayout>
