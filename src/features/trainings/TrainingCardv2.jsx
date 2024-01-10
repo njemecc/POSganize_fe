@@ -10,9 +10,12 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import { USER } from "../../utils/roles";
 import { useUser } from "../authentication/useUser";
+import { useDuplicateTraining } from "./useIsTrainingDuplicate";
 
 const TrainingCardv2 = ({ training }) => {
   const { id, name, image, price, description } = training;
+
+  const { isDuplicate, isLoadingDuplicate } = useDuplicateTraining(id);
 
   const { role } = useUser();
   const navigate = useNavigate();
@@ -34,7 +37,17 @@ const TrainingCardv2 = ({ training }) => {
         <p className="card-body">{`${description.substring(0, 150)}...`}</p>
         <p class="card-body">{price}$</p>
         {role === USER && (
-          <Button onClick={addTrainingToCartHandler}>Subscribe</Button>
+          <Button
+            variation={
+              isDuplicate && !isLoadingDuplicate ? "disabled" : "primary"
+            }
+            disabled={isDuplicate}
+            onClick={addTrainingToCartHandler}
+          >
+            {isDuplicate && !isLoadingDuplicate
+              ? "Alredy a member"
+              : "Subscribe"}
+          </Button>
         )}
       </div>
     </Card>
