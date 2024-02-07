@@ -2,13 +2,21 @@
 import styled from "styled-components";
 //icons
 import { HiOutlineUsers } from "react-icons/hi2";
+import { FaShoppingCart } from "react-icons/fa";
 
 import { FaRegNewspaper } from "react-icons/fa";
 import { IoBarChartOutline } from "react-icons/io5";
 import { RiFilePaper2Line } from "react-icons/ri";
+import { MdOutlineSportsMartialArts } from "react-icons/md";
+import { LiaNewspaperSolid } from "react-icons/lia";
 
 //router
 import { NavLink } from "react-router-dom";
+//hooks
+import { useUser } from "../features/authentication/useUser";
+import { ADMIN, USER } from "../utils/roles";
+import Spinner from "./Spinner";
+//constants
 
 const NavList = styled.ul`
   display: flex;
@@ -55,33 +63,75 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 const MainNav = () => {
+  //authorization
+  const { role, userId, isLoading } = useUser();
+
+  isLoading && <Spinner />;
+
   return (
     <nav>
       <NavList>
+        {role === ADMIN && !isLoading ? (
+          <li>
+            <StyledNavLink to="/users">
+              <HiOutlineUsers />
+              <span>Users</span>
+            </StyledNavLink>
+          </li>
+        ) : (
+          <li>
+            <StyledNavLink to={"/profile"}>
+              <HiOutlineUsers />
+              <span>Profile</span>
+            </StyledNavLink>
+          </li>
+        )}
+
         <li>
-          <StyledNavLink to="/dashboard">
-            <IoBarChartOutline />
-            <span>Dashboard</span>
+          <StyledNavLink to="/trainings">
+            <MdOutlineSportsMartialArts />
+            <span>Trainings</span>
           </StyledNavLink>
         </li>
-        <li>
-          <StyledNavLink to="/users">
-            <HiOutlineUsers />
-            <span>Users</span>
-          </StyledNavLink>
-        </li>
+        {role === USER && (
+          <li>
+            <StyledNavLink to="/cart">
+              <FaShoppingCart />
+              <span>Checkout</span>
+            </StyledNavLink>
+          </li>
+        )}
+
         <li>
           <StyledNavLink to="/news">
             <FaRegNewspaper />
             <span>News</span>
           </StyledNavLink>
         </li>
+
+        {role === ADMIN && (
+          <li>
+            <StyledNavLink to="/create/news">
+              <LiaNewspaperSolid />
+              <span>Create News</span>
+            </StyledNavLink>
+          </li>
+        )}
+
         <li>
           <StyledNavLink to="/rules">
             <RiFilePaper2Line />
             <span>Rules</span>
           </StyledNavLink>
         </li>
+        {role === ADMIN && (
+          <li>
+            <StyledNavLink to="/dashboard">
+              <IoBarChartOutline />
+              <span>Dashboard</span>
+            </StyledNavLink>
+          </li>
+        )}
       </NavList>
     </nav>
   );

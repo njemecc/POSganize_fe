@@ -4,15 +4,15 @@ import ConfirmDelete from "../../ui/ConfirmDelete";
 import CreateUserForm from "./CreateUserForm";
 import { TableRow, TableCell } from "@mui/material";
 import Menus from "../../ui/Menus";
+import Tag from "../../ui/Tag";
 
 //icons
-import { HiPencil, HiTrash } from "react-icons/hi2";
+import { HiEye, HiPencil, HiTrash } from "react-icons/hi2";
 
 //hooks
 import { useState, useEffect } from "react";
 import { useDeleteUser } from "./useDeleteUser";
-import { useIsActiveUser } from "./useIsActiveUser";
-import Spinner from "../../ui/Spinner";
+import { useNavigate } from "react-router-dom";
 
 const UserRow = ({ user }) => {
   const { deleteUser, isDeleting } = useDeleteUser();
@@ -20,6 +20,8 @@ const UserRow = ({ user }) => {
 
   const [showEdit, setShowEdit] = useState(false);
   const [whatModal, setWhatModal] = useState("");
+
+  const navigate = useNavigate();
 
   //resili smo ovo kasnije na backend-u , gde user ima active property
   // const { isUserActive, isLoadingUserActive } = useIsActiveUser(user.id);
@@ -42,7 +44,14 @@ const UserRow = ({ user }) => {
         {user.phoneNumber}
       </TableCell>
       <TableCell sx={{ fontSize: 13.5 }} align="left">
-        {user.active ? "active" : "not active"}
+        {" "}
+        {user.active === null ? (
+          <Tag type="yellow">not a member</Tag>
+        ) : user.active ? (
+          <Tag type="green">active</Tag>
+        ) : (
+          <Tag type="red">not active</Tag>
+        )}
       </TableCell>
       <Menus.Menu>
         <Menus.Toggle id={user.id} />
@@ -64,6 +73,14 @@ const UserRow = ({ user }) => {
           >
             <HiTrash />
             Delete
+          </Menus.Button>
+          <Menus.Button
+            onClick={() => {
+              navigate(`/users/${user.id}`);
+            }}
+          >
+            <HiEye />
+            Details
           </Menus.Button>
         </Menus.List>
       </Menus.Menu>

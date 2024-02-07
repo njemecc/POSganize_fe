@@ -1,17 +1,29 @@
+//mui components
 import { TextField, Stack } from "@mui/material";
-
+import { Avatar } from "@mui/material";
 //components
 import Heading from "../../ui/Heading";
 import Button from "../../ui/Button";
 import Row from "../../ui/Row";
+
+//functions
+import { readFileAsBlob } from "../../utils/helpers";
 
 //form
 import { useForm } from "react-hook-form";
 //custom hooks
 import { useCreateUser } from "./useCreateUser";
 import { useUpdateUser } from "./useUpdateUser";
+import { useState } from "react";
 
 const CreateUserForm = ({ onClose, edit = false, user }) => {
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+  };
+
   //styles
   const labelStyles = {
     fontSize: "1.5rem",
@@ -27,12 +39,26 @@ const CreateUserForm = ({ onClose, edit = false, user }) => {
 
   const { updateUser, isUpdating } = useUpdateUser();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    const image = selectedFile ? await readFileAsBlob(selectedFile) : null;
+
     if (edit && user) {
-      const updatedUser = { data, userId: user.id };
+      const updatedUser = image
+        ? {
+            data: {
+              ...data,
+              image: selectedFile ? Array.from(image) : user?.image,
+            },
+            userId: user.id,
+          }
+        : { data, userId: user.id };
+
       updateUser(updatedUser);
     } else {
-      createUser(data);
+      createUser({
+        ...data,
+        image: selectedFile ? Array.from(image) : null,
+      });
     }
 
     onClose();
@@ -98,24 +124,22 @@ const CreateUserForm = ({ onClose, edit = false, user }) => {
             }}
             {...register("email")}
           />
-          {edit ? (
-            ""
-          ) : (
-            <TextField
-              label="Password"
-              required
-              variant="outlined"
-              color="primary"
-              type="password"
-              InputProps={{
-                style: inputStyles,
-              }}
-              InputLabelProps={{
-                style: labelStyles,
-              }}
-              {...register("password")}
-            />
-          )}
+
+          <TextField
+            disabled={edit ? true : false}
+            label="Password"
+            required
+            variant="outlined"
+            color="primary"
+            type="password"
+            InputProps={{
+              style: inputStyles,
+            }}
+            InputLabelProps={{
+              style: labelStyles,
+            }}
+            {...register("password")}
+          />
         </Stack>
         <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
           <TextField
@@ -133,6 +157,36 @@ const CreateUserForm = ({ onClose, edit = false, user }) => {
             }}
             {...register("phoneNumber")}
           />
+          <label
+            htmlFor="avatarInput"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              textAlign: "center",
+              padding: "0.5rem",
+
+              margin: "0 auto",
+            }}
+          >
+            <Avatar style={{ width: "4rem", height: "4rem" }} src="" />
+            {selectedFile && (
+              <p style={{ fontSize: "1rem" }}>
+                Selected file: {selectedFile.name}{" "}
+              </p>
+            )}
+            <input
+              id="avatarInput"
+              type="file"
+              accept=".jpg, .jpeg, .png, .gif"
+              style={{
+                display: "none",
+              }}
+              onChange={handleFileChange}
+            />
+          </label>
         </Stack>
         <Row type="horizontal">
           <Button disabled={isCreating || isUpdating}>

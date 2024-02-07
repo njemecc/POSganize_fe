@@ -6,6 +6,39 @@ const Heading = styled.h1`
     css`
       font-size: 3rem;
       font-weight: 600;
+      text-align: center;
+    `}
+
+  ${(props) =>
+    props.as === "h5" &&
+    css`
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-align: center;
+    `}
+
+  ${(props) =>
+    props.as === "h8" &&
+    css`
+      font-size: 1.5 rem;
+      font-weight: 500;
+      text-align: center;
+    `}
+
+  ${(props) =>
+    props.as === "h7" &&
+    css`
+      font-size: 2.5rem;
+      font-weight: 600;
+      text-align: center;
+    `}
+
+  ${(props) =>
+    props.as === "h0" &&
+    css`
+      font-size: 3.5rem;
+      font-weight: 600;
+      text-align: center;
     `}
 
   ${(props) =>
@@ -23,12 +56,21 @@ const Heading = styled.h1`
       font-weight: 600;
       text-align: center;
     `}
+
+    ${(props) =>
+    props.as === "h2-left" &&
+    css`
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: left;
+    `}
     
     ${(props) =>
     props.as === "h3" &&
     css`
       font-size: 2rem;
       font-weight: 500;
+      text-align: center;
     `}
     
   line-height: 1.4;

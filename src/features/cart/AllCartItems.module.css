@@ -1,0 +1,15 @@
+.allCartItems {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding box shadow */
+  background-color: #ffffff; /* Adding a white background */
+}
+
+.button-wrapper {
+  width: 50%;
+  margin: 3rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
