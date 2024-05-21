@@ -9,6 +9,7 @@ import { ADMIN, USER } from "../../utils/roles";
 import { useState, useEffect } from "react";
 import { useGetUser } from "./useGetUser";
 import { exactProp } from "@mui/utils";
+import { useQrCode } from "../hooks/useQrCode";
 
 const UserDetails = () => {
   const { role, isLoading } = useUser();
@@ -48,6 +49,8 @@ const UserDetails = () => {
     imageSrc,
   ]);
 
+  const { qrCode, loadingQrCode } = useQrCode();
+
   (isLoading || loadingUser) && <Spinner />;
 
   return (
@@ -60,15 +63,27 @@ const UserDetails = () => {
           margin: "auto",
         }}
       >
-        <img
-          style={{
-            maxWidth: "100%",
-            maxHeight: "100%",
-            borderRadius: "15px",
-            objectFit: "contain",
-          }}
-          src={imageSrc}
-        ></img>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <img
+            style={{
+              maxWidth: "100%",
+              maxHeight: "100%",
+              borderRadius: "15px",
+              objectFit: "contain",
+            }}
+            src={imageSrc}
+          ></img>
+
+          <img
+            style={{
+              maxWidth: "100%",
+              maxHeight: "100%",
+              borderRadius: "15px",
+              objectFit: "contain",
+            }}
+            src={qrCode}
+          ></img>
+        </div>
       </div>
       <UserDetailsHeaderv2 />
 
